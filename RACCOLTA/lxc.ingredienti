@@ -1,0 +1,12 @@
+# LXC
+RELEASE=1.0.0
+PROGRAM_NAME=lxc
+ARCHIVE_TYPE="tar.gz"
+APP_NAME=Lxc
+DISTRO=Debian7
+KERNEL=Linux
+ARCH=ia32
+PREFIX_ROOT=/opt
+SOURCE_URL="https://linuxcontainers.org/downloads/lxc-1.0.0.tar.gz"
+STRIP_ALL=true
+CONFIGURE_OPTIONS=""
