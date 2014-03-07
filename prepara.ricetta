@@ -2,7 +2,8 @@
 #
 # prepara.ricetta
 #
-# 2014 mutek
+# 2014 mutek <mutek _A_T_ riseup _D_O_T_ net>
+# WTF
 #
 # cuoce una ricetta letta dal file NOME.ingredienti
 #
@@ -16,93 +17,107 @@ do
 done
 echo "i tools di base esistono...proseguo"
 
-# TOFIX
-# root o sudo ma vai in manuale
-#apt-get -y build-dep $DEB_PACKAGE || exit 1
+#apt-get update
 
-[ -z $1 ] && echo "uso: "$0" NOME.ingredienti" && exit 1
-
-gli_ingredienti=$1
-
-[ ! -f $gli_ingredienti ] && echo "non vedo nessuna elenco di ingredienti di nome $gli_ingredienti" && exit 1
-
-echo "la ricetta usera i seguenti ingredienti trovati in "$gli_ingredienti
-
-cat $gli_ingredienti | grep -v \# | grep -v \"\"
-
-echo ""
-
-. ./$gli_ingredienti
-
-export LC_ALL=C
-
-[ -z $RELEASE ] && RELEASE=0.1dev
-[ -z $PROGRAM_NAME ] && PROGRAM_NAME="UntitledProgramName"
-[ -z $ARCHIVE_TYPE ] && ARCHIVE_TYPE="tar.gz"
-[ -z $APP_NAME ] && APP_NAME=UntitledAppName
-[ -z $DISTRO ] && DISTRO=UntitledDistro
-[ -z $KERNEL ] && KERNEL=UntitledKernelName
-[ -z $ARCH ] && ARCH=UntitledArch
-[ -z $PREFIX_ROOT ] && PREFIX_ROOT=UntitledPrefixRoot/$APP_NAME
-[ -z $SOURCE_URL ] && SOURCE_URL="http://UntitledSoureceUrl"
-[ -z $STRIP_ALL ] && STRIP_ALL=true
-[ -z $CONFIGURE_OPTIONS ] && CONFIGURE_OPTIONS=""
-# ----------------------------------------------------------------
-
-
-export PREFIX=$PREFIX_ROOT/$APP_NAME/$RELEASE/$DISTRO/$KERNEL/$ARCH
-
-ARCHIVE=$PROGRAM_NAME-$RELEASE.$ARCHIVE_TYPE
-
-mkdir -p $PREFIX
-
-[ ! -f $ARCHIVE ] && curl $SOURCE_URL > $ARCHIVE
-sha512sum $ARCHIVE > $ARCHIVE.sha512sum
-tar -xf $ARCHIVE
-
-cd $PROGRAM_NAME-$RELEASE
-./configure --prefix=$PREFIX $CONFIGURE_OPTIONS || true
-
-# un pizzico di fantasia prima di cuocere la pietanza
-. ../$PROGRAM_NAME.pre-cook
-
-make
-make install
-
-cd ..
-
-HEADER_PREFIX_ROOT=$(echo $PREFIX_ROOT | tr -s ' ' | sed 's/ /_/g' | cut -d"/" -f 2)
-echo "HEADER_PREFIX_ROOT = "$HEADER_PREFIX_ROOT
-
-FOOTER_PREFIX_ROOT=$(echo $PREFIX_ROOT | tr -s ' ' | sed 's/ /_/g' | cut -d"/" --complement -f 2)
-echo "FOOTER_PREFIX_ROOT = "$FOOTER_PREFIX_ROOT
-
-LOCAL_ROOT=$HEADER_PREFIX_ROOT$FOOTER_PREFIX_ROOT
-echo "LOCAL_ROOT = "$LOCAL_ROOT
-
-rm -r --preserve-root $HEADER_PREFIX_ROOT
-mkdir -p $LOCAL_ROOT
-mv $PREFIX_ROOT/$APP_NAME $LOCAL_ROOT/
-cd $PROGRAM_NAME-$RELEASE
-make uninstall
-wait
-make clean
-wait
-cd ..
-rm -r --preserve-root $PROGRAM_NAME-$RELEASE
-wait
-
-[ "$STRIP_ALL" = "true" ] && for i in $(find $LOCAL_ROOT); do strip --strip-all $i; done 
-
-for i in $(find $LOCAL_ROOT)
+for ricetta in $(ls *.ingredienti)
 do
 
-	sha512sum $i >> $APP_NAME.sha512sum
+	gli_ingredienti=$ricetta
+
+	echo "la ricetta usera i seguenti ingredienti trovati in "$gli_ingredienti
+
+	cat $gli_ingredienti | grep -v \# | grep -v \"\"
+
+	echo ""
+
+	. ./$gli_ingredienti
+
+	export LC_ALL=C
+
+	[ -z $RELEASE ] && RELEASE=0.1dev
+	[ -z $PROGRAM_NAME ] && PROGRAM_NAME="UntitledProgramName"
+	[ -z $ARCHIVE_TYPE ] && ARCHIVE_TYPE="tar.gz"
+	[ -z $APP_NAME ] && APP_NAME=UntitledAppName
+	[ -z $DISTRO ] && DISTRO=UntitledDistro
+	[ -z $KERNEL ] && KERNEL=UntitledKernelName
+	[ -z $ARCH ] && ARCH=UntitledArch
+	[ -z $PREFIX_ROOT ] && PREFIX_ROOT=UntitledPrefixRoot/$APP_NAME
+	[ -z $SOURCE_URL ] && SOURCE_URL="http://UntitledSoureceUrl"
+	[ -z $STRIP_ALL ] && STRIP_ALL=true
+	[ -z $CONFIGURE_OPTIONS ] && CONFIGURE_OPTIONS=""
+	[ -z $APTGET_UPDATE ] && APTGET_UPDATE=0
+	[ -z $APTGET_BUILDDEP ] && APTGET_BUILDDEP=true
+	# ----------------------------------------------------------------
+
+	echo "APTGET_BUILDDEP = "$APTGET_BUILDDEP
+
+	[ "$APTGET_BUILDDEP" = "true" ] && apt-get build-dep $PROGRAM_NAME
+
+	export PREFIX=$PREFIX_ROOT/$APP_NAME/$RELEASE/$DISTRO/$KERNEL/$ARCH
+
+	echo "PREFIX = "$PREFIX
+
+	ARCHIVE=$PROGRAM_NAME-$RELEASE.$ARCHIVE_TYPE
+
+	echo "ARCHIVE = "$ARCHIVE
+
+	echo "rm "$PREFIX_ROOT"/"$APP_NAME
+	rm --preserve-root -r $PREFIX_ROOT/$APP_NAME
+	mkdir -p $PREFIX
+
+	[ ! -f $ARCHIVE ] && curl $SOURCE_URL > $ARCHIVE
+	sha512sum $ARCHIVE > $ARCHIVE.sha512sum
+	tar -xf $ARCHIVE
+
+	cd $PROGRAM_NAME-$RELEASE
+	./configure --prefix=$PREFIX $CONFIGURE_OPTIONS
+
+	# un pizzico di fantasia prima di cuocere la pietanza
+
+	[ -f ../$PROGRAM_NAME.pre-cook ] && . ../$PROGRAM_NAME.pre-cook
+
+	make
+	wait
+
+	make install
+	wait
+
+	cd ..
+
+	HEADER_PREFIX_ROOT=$(echo $PREFIX_ROOT | tr -s ' ' | sed 's/ /_/g' | cut -d"/" -f 2)
+	echo "HEADER_PREFIX_ROOT = "$HEADER_PREFIX_ROOT
+
+	FOOTER_PREFIX_ROOT=$(echo $PREFIX_ROOT | tr -s ' ' | sed 's/ /_/g' | cut -d"/" --complement -f 2)
+	echo "FOOTER_PREFIX_ROOT = "$FOOTER_PREFIX_ROOT
+
+	LOCAL_ROOT=$HEADER_PREFIX_ROOT$FOOTER_PREFIX_ROOT
+	echo "LOCAL_ROOT = "$LOCAL_ROOT
+
+	rm -r --preserve-root $HEADER_PREFIX_ROOT/$APP_NAME || true
+	mkdir -p $LOCAL_ROOT
+	mv $PREFIX_ROOT/$APP_NAME $LOCAL_ROOT/
+	cd $PROGRAM_NAME-$RELEASE
+	make uninstall
+	wait
+	make clean
+	wait
+	cd ..
+	rm -r --preserve-root $PROGRAM_NAME-$RELEASE || true
+	wait
+
+	[ "$STRIP_ALL" = "true" ] && for i in $(find $LOCAL_ROOT/$APP_NAME); do strip --strip-all $i; done 
+
+	for i in $(find $LOCAL_ROOT/$APP_NAME)
+	do
+
+		sha512sum $i >> $APP_NAME.sha512sum
+
+	done
+
+	sha512sum $APP_NAME.sha512sum > $APP_NAME.sha512sum.sha512sum
+
+	ls --color
+
+	du -sh $LOCAL_ROOT
 
 done
-
-sha512sum $APP_NAME.sha512sum > $APP_NAME.sha512sum.sha512sum
-
-ls --color
-
-du -sh $LOCAL_ROOT

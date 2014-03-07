@@ -10,3 +10,4 @@ PREFIX_ROOT=/opt
 SOURCE_URL="https://linuxcontainers.org/downloads/lxc-1.0.0.tar.gz"
 STRIP_ALL=true
 CONFIGURE_OPTIONS=""
+APTGET_BUILDDEP=true
