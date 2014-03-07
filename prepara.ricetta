@@ -49,7 +49,8 @@ export LC_ALL=C
 [ -z $CONFIGURE_OPTIONS ] && CONFIGURE_OPTIONS=""
 # ----------------------------------------------------------------
 
-PREFIX=$PREFIX_ROOT/$APP_NAME/$RELEASE/$DISTRO/$KERNEL/$ARCH
+
+export PREFIX=$PREFIX_ROOT/$APP_NAME/$RELEASE/$DISTRO/$KERNEL/$ARCH
 
 ARCHIVE=$PROGRAM_NAME-$RELEASE.$ARCHIVE_TYPE
 
@@ -60,7 +61,10 @@ sha512sum $ARCHIVE > $ARCHIVE.sha512sum
 tar -xf $ARCHIVE
 
 cd $PROGRAM_NAME-$RELEASE
-./configure --prefix=$PREFIX $CONFIGURE_OPTIONS
+./configure --prefix=$PREFIX $CONFIGURE_OPTIONS || true
+
+# un pizzico di fantasia prima di cuocere la pietanza
+. ../$PROGRAM_NAME.pre-cook
 
 make
 make install
@@ -79,12 +83,17 @@ echo "LOCAL_ROOT = "$LOCAL_ROOT
 rm -r --preserve-root $HEADER_PREFIX_ROOT
 mkdir -p $LOCAL_ROOT
 mv $PREFIX_ROOT/$APP_NAME $LOCAL_ROOT/
-rm -r lxc-$RELEASE
+cd $PROGRAM_NAME-$RELEASE
+make uninstall
+wait
+make clean
+wait
+cd ..
+rm -r --preserve-root $PROGRAM_NAME-$RELEASE
 wait
 
 [ "$STRIP_ALL" = "true" ] && for i in $(find $LOCAL_ROOT); do strip --strip-all $i; done 
 
-echo "" > /tmp/$APP_NAME.tmp
 for i in $(find $LOCAL_ROOT)
 do
 
