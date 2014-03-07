@@ -1,0 +1,16 @@
+# NSD
+RELEASE=4.0.1
+PROGRAM_NAME=nsd
+ARCHIVE_TYPE="tar.gz"
+APP_NAME=Nsd
+DISTRO=Debian7
+KERNEL=Linux
+ARCH=ia32
+PREFIX_ROOT=/opt
+SOURCE_URL="http://www.nlnetlabs.nl/downloads/nsd/nsd-4.0.1.tar.gz"
+STRIP_ALL=true
+CONFIGURE_OPTIONS="--with-user=$APP_NAME"
+MD5SUM=""
+SHA1SUM=""
+SHA256SUM="45bf2adb5ceddc140eab36b8de9fa527175b77559662df1383ef22ccf097d1bd"
+SHA512SUM=""
