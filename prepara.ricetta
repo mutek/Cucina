@@ -2,9 +2,23 @@
 #
 # prepara.ricetta
 #
+# 2014 mutek
+#
 # cuoce una ricetta letta dal file NOME.ingredienti
 #
 #
+
+for i in "apt-get" "curl" "echo" "sha256sum" "tar" "make" "gzip"
+do
+
+   [ -z $(which $i) ] && echo "il tool: "$i" non è raggiungibile...esco..." && exit 1
+
+done
+echo "i tools di base esistono...proseguo"
+
+# TOFIX
+# root o sudo ma vai in manuale
+#apt-get -y build-dep $DEB_PACKAGE || exit 1
 
 [ -z $1 ] && echo "uso: "$0" NOME.ingredienti" && exit 1
 
@@ -14,7 +28,7 @@ gli_ingredienti=$1
 
 echo "la ricetta usera i seguenti ingredienti trovati in "$gli_ingredienti
 
-cat $gli_ingredienti | grep -v \#
+cat $gli_ingredienti | grep -v \# | grep -v \"\"
 
 echo ""
 
