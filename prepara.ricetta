@@ -45,13 +45,17 @@ do
 	[ -z $SOURCE_URL ] && SOURCE_URL="http://UntitledSoureceUrl"
 	[ -z $STRIP_ALL ] && STRIP_ALL=true
 	[ -z $CONFIGURE_OPTIONS ] && CONFIGURE_OPTIONS=""
-	[ -z $APTGET_UPDATE ] && APTGET_UPDATE=0
+	[ -z $APTGET_UPDATE ] && APTGET_UPDATE=false
 	[ -z $APTGET_BUILDDEP ] && APTGET_BUILDDEP=true
+	[ -z $YUM_BUILDDEP ] && YUM_BUILDDEP=false
+	[ -z $EMERGE_O ] && $EMERGE_O=false
 	# ----------------------------------------------------------------
 
 	echo "APTGET_BUILDDEP = "$APTGET_BUILDDEP
 
 	[ "$APTGET_BUILDDEP" = "true" ] && apt-get build-dep $PROGRAM_NAME
+        [ "$YUM_BUILDDEP" = "true" ] && yum builddep $PROGRAM_NAME
+	[ "$EMERGE_O" = "true" ] && emerge -o $PROGRAM_NAME
 
 	export PREFIX=$PREFIX_ROOT/$APP_NAME/$RELEASE/$DISTRO/$KERNEL/$ARCH
 
