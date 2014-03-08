@@ -15,6 +15,7 @@ do
    [ -z $(which $i) ] && echo "il tool: "$i" non è raggiungibile...esco..." && exit 1
 
 done
+
 echo "i tools di base esistono...proseguo"
 
 #apt-get update
@@ -73,17 +74,19 @@ do
 	sha512sum $ARCHIVE > $ARCHIVE.sha512sum
 	tar -xf $ARCHIVE
 
+	echo "configure --prefix="$PREFIX" "$CONFIGURE_OPTIONS
+
 	cd $PROGRAM_NAME-$RELEASE
-	./configure --prefix=$PREFIX $CONFIGURE_OPTIONS
+	./configure --prefix=$PREFIX "$CONFIGURE_OPTIONS" > ../$APP_NAME.log
 
 	# un pizzico di fantasia prima di cuocere la pietanza
 
 	[ -f ../$PROGRAM_NAME.pre-cook ] && . ../$PROGRAM_NAME.pre-cook
 
-	make
+	make >> ../$APP_NAME.log
 	wait
 
-	make install
+	make install >> ../$APP_NAME.log
 	wait
 
 	cd ..

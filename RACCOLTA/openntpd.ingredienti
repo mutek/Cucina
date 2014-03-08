@@ -1,0 +1,17 @@
+# OPENNTPD
+RELEASE=3.9p1
+PROGRAM_NAME=openntpd
+ARCHIVE_TYPE="tar.gz"
+APP_NAME=OpenNTP
+DISTRO=Debian7
+KERNEL=Linux
+ARCH=ia32
+PREFIX_ROOT=/opt
+SOURCE_URL="http://openbsd.mirror.garr.it/pub/OpenBSD/OpenNTPD/openntpd-3.9p1.tar.gz"
+STRIP_ALL=true
+CONFIGURE_OPTIONS="--with-privsep-user=$APP_NAME --with-builtin-arc4random"
+MD5SUM=""
+SHA1SUM=""
+SHA256SUM=""
+SHA512SUM=""
+APTGET_BUILDDEP=true
