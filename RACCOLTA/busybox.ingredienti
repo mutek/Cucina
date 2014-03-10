@@ -1,0 +1,17 @@
+# BUSYBOX
+RELEASE=1.22.1
+PROGRAM_NAME=busybox
+ARCHIVE_TYPE="tar.bz2"
+APP_NAME=Busybox
+DISTRO=Debian7
+KERNEL=Linux
+ARCH=ia32
+PREFIX_ROOT=/opt
+SOURCE_URL="http://www.busybox.net/downloads/busybox-1.22.1.tar.bz2"
+STRIP_ALL=true
+CONFIGURE_OPTIONS=""
+MD5SUM=""
+SHA1SUM=""
+SHA256SUM=""
+SHA512SUM=""
+APTGET_BUILDDEP=true

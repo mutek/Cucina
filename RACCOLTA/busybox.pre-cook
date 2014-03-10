@@ -1,0 +1,12 @@
+export CONFIG_PREFIX=$PREFIX
+
+make CONFIG_PREFIX=$PREFIX defconfig
+wait 
+
+cat .config > ../config.log
+
+make CONFIG_PREFIX=$PREFIX
+wait
+
+make CONFIG_PREFIX=$PREFIX install
+wait
