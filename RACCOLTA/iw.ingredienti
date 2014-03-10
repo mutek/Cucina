@@ -1,0 +1,17 @@
+# IW
+RELEASE=3.14
+PROGRAM_NAME=iw
+ARCHIVE_TYPE="tar.gz"
+APP_NAME=Iw
+DISTRO=Debian7
+KERNEL=Linux
+ARCH=amd64
+PREFIX_ROOT=/opt
+SOURCE_URL="https://www.kernel.org/pub/software/network/iw/iw-3.14.tar.gz"
+STRIP_ALL=true
+CONFIGURE_OPTIONS=""
+MD5SUM=""
+SHA1SUM=""
+SHA256SUM=""
+SHA512SUM=""
+APTGET_BUILDDEP=true
