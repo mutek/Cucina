@@ -115,6 +115,8 @@ do
 	make install >> ../$APP_NAME.log
 	wait
 
+        [ -f ../$PROGRAM_NAME.post-cook ] && . ../$PROGRAM_NAME.post-cook
+
 	cd ..
 
 	HEADER_PREFIX_ROOT=$(echo $PREFIX_ROOT | tr -s ' ' | sed 's/ /_/g' | cut -d"/" -f 2)
@@ -165,7 +167,6 @@ do
         echo "hash in $ARCHIVE.sha512sum" >> $APP_NAME.log
         echo "" >> $APP_NAME.log
         cat $ARCHIVE.sha512sum >> $APP_NAME.log
-
 
 	ls --color
 
