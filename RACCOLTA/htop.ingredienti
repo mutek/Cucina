@@ -1,0 +1,17 @@
+# HTOP
+RELEASE=1.0.2
+PROGRAM_NAME=htop
+ARCHIVE_TYPE="tar.gz"
+APP_NAME=Htop
+DISTRO=Debian7
+KERNEL=Linux
+ARCH=amd64
+PREFIX_ROOT=/opt
+SOURCE_URL="http://hisham.hm/htop/releases/1.0.2/htop-1.0.2.tar.gz"
+STRIP_ALL=true
+CONFIGURE_OPTIONS=""
+MD5SUM=""
+SHA1SUM=""
+SHA256SUM=""
+SHA512SUM=""
+APTGET_BUILDDEP=true

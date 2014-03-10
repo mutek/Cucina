@@ -34,7 +34,7 @@ do
 	. ./$gli_ingredienti
 	wait
 
-	. ./condiviso
+	[ -f ./condiviso ] && . ./condiviso
 	wait
 
 	export LC_ALL=C
