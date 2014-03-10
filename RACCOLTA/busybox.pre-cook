@@ -1,7 +1,7 @@
 export CONFIG_PREFIX=$PREFIX
 
-#make CONFIG_PREFIX=$PREFIX defconfig
-#wait 
+make CONFIG_PREFIX=$PREFIX defconfig
+wait 
 
 cat .config > ../$APP_NAME.config.old.log
 
@@ -12,3 +12,4 @@ wait
 
 make CONFIG_PREFIX=$PREFIX install
 wait
+

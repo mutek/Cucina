@@ -32,6 +32,10 @@ do
 	echo ""
 
 	. ./$gli_ingredienti
+	wait
+
+	. ./condiviso
+	wait
 
 	export LC_ALL=C
 
