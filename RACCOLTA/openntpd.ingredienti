@@ -7,7 +7,7 @@ DISTRO=Debian7
 KERNEL=Linux
 ARCH=ia32
 PREFIX_ROOT=/opt
-SOURCE_URL="http://openbsd.mirror.garr.it/pub/OpenBSD/OpenNTPD/openntpd-3.9p1.tar.gz"
+SOURCE_URL='http://ftp.spline.de/pub/OpenBSD/OpenNTPD/openntpd-3.9p1.tar.gz'
 STRIP_ALL=true
 CONFIGURE_OPTIONS="--with-privsep-user=$APP_NAME --with-builtin-arc4random"
 MD5SUM=""

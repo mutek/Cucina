@@ -70,9 +70,10 @@ do
 	rm --preserve-root -r $PREFIX_ROOT/$APP_NAME
 	mkdir -p $PREFIX
 
-	[ ! -f $ARCHIVE ] && curl $SOURCE_URL > $ARCHIVE
+	echo "Scarico: "$ARCHIVE" da "$SOURCE_URL
+	[ -f $ARCHIVE ] && curl "$SOURCE_URL" > $ARCHIVE
 	sha512sum $ARCHIVE > $ARCHIVE.sha512sum
-	tar -xf $ARCHIVE
+	tar -xvf $ARCHIVE -O || exit 1
 
 	echo "configure --prefix="$PREFIX" "$CONFIGURE_OPTIONS
 
