@@ -66,26 +66,51 @@ do
 
 	echo "ARCHIVE = "$ARCHIVE
 
+	unlink $APP_NAME.sha512sum
+	unlink $APP_NAME.sha512sum.sha512sum
+	unlink $APP_NAME.log
+
 	echo "rm "$PREFIX_ROOT"/"$APP_NAME
 	rm --preserve-root -r $PREFIX_ROOT/$APP_NAME
 	mkdir -p $PREFIX
 
 	echo "Scarico: "$ARCHIVE" da "$SOURCE_URL
-	[ -f $ARCHIVE ] && curl "$SOURCE_URL" > $ARCHIVE
-	sha512sum $ARCHIVE > $ARCHIVE.sha512sum
-	tar -xvf $ARCHIVE -O || exit 1
+	[ ! -f $ARCHIVE ] && curl $SOURCE_URL > $ARCHIVE
+	ls --color
+
+	echo "provo ad estrarre"
+	echo "" >> $APP_NAME.log
+	echo "tar -xvf "$ARCHIVE >> $APP_NAME.log
+	echo "" >> $APP_NAME.log
+
+	tar -xvf $ARCHIVE 1>> $APP_NAME.log 2>> $APP_NAME.log || exit
+
+        sha512sum $ARCHIVE > $ARCHIVE.sha512sum
 
 	echo "configure --prefix="$PREFIX" "$CONFIGURE_OPTIONS
 
+	echo "" >> $APP_NAME.log
+	echo "configure --prefix="$PREFIX" "$CONFIGURE_OPTIONS >> $APP_NAME.log
+	echo "" >> $APP_NAME.log
+
 	cd $PROGRAM_NAME-$RELEASE
-	./configure --prefix=$PREFIX "$CONFIGURE_OPTIONS" > ../$APP_NAME.log
+	./configure --prefix=$PREFIX "$CONFIGURE_OPTIONS" >> ../$APP_NAME.log
 
 	# un pizzico di fantasia prima di cuocere la pietanza
 
 	[ -f ../$PROGRAM_NAME.pre-cook ] && . ../$PROGRAM_NAME.pre-cook
 
+	echo "" >> ../$APP_NAME.log
+	echo "make" >> ../$APP_NAME.log
+	echo "" >> ../$APP_NAME.log
+
 	make >> ../$APP_NAME.log
 	wait
+
+        echo "" >> ../$APP_NAME.log
+        echo "make install" >> ../$APP_NAME.log
+        echo "" >> ../$APP_NAME.log
+        make >> ../$APP_NAME.log
 
 	make install >> ../$APP_NAME.log
 	wait
@@ -109,7 +134,9 @@ do
 	wait
 	make clean
 	wait
+
 	cd ..
+
 	rm -r --preserve-root $PROGRAM_NAME-$RELEASE || true
 	wait
 
@@ -124,8 +151,28 @@ do
 
 	sha512sum $APP_NAME.sha512sum > $APP_NAME.sha512sum.sha512sum
 
+	echo "" >> $APP_NAME.log
+	echo "hash in $APP_NAME.sha512sum" >> $APP_NAME.log
+	echo "" >> $APP_NAME.log
+	cat $APP_NAME.sha512sum >> $APP_NAME.log
+
+        echo "" >> $APP_NAME.log
+        echo "hash in $APP_NAME.sha512sum.sha512sum" >> $APP_NAME.log
+        echo "" >> $APP_NAME.log
+        cat $APP_NAME.sha512sum.sha512sum >> $APP_NAME.log
+
+        echo "" >> $APP_NAME.log
+        echo "hash in $ARCHIVE.sha512sum" >> $APP_NAME.log
+        echo "" >> $APP_NAME.log
+        cat $ARCHIVE.sha512sum >> $APP_NAME.log
+
+
 	ls --color
 
 	du -sh $LOCAL_ROOT
+
+	echo "" >> $APP_NAME.log
+	ls -la >> $APP_NAME.log
+	echo "" >> $APP_NAME.log
 
 done
