@@ -1,9 +1,11 @@
 export CONFIG_PREFIX=$PREFIX
 
-make CONFIG_PREFIX=$PREFIX defconfig
-wait 
+#make CONFIG_PREFIX=$PREFIX defconfig
+#wait 
 
-cat .config > ../config.log
+cat .config > ../$APP_NAME.config.old.log
+
+cat ../busybox.config-$RELEASE > .config
 
 make CONFIG_PREFIX=$PREFIX
 wait

@@ -104,7 +104,7 @@ do
 	echo "make" >> ../$APP_NAME.log
 	echo "" >> ../$APP_NAME.log
 
-	make >> ../$APP_NAME.log
+	make >> ../$APP_NAME.log || exit 1
 	wait
 
         echo "" >> ../$APP_NAME.log
