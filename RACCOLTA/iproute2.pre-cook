@@ -1,0 +1,35 @@
+sed -i '/ROOTDIR=/d' Makefile
+sed -i '/PREFIX=/d' Makefile
+sed -i '/LIBDIR=/d' Makefile
+sed -i '/SBINDIR=/d' Makefile
+sed -i '/CONFDIR=/d' Makefile
+sed -i '/DATADIR=/d' Makefile
+sed -i '/DOCDIR=/d' Makefile
+sed -i '/MANDIR=/d' Makefile
+sed -i '/ARPDDIR=/d' Makefile
+
+wait
+
+cat Makefile > Makefile.tmp
+
+wait
+
+cat << EOF > pippo
+
+ROOTDIR=\$(DESTDIR)
+PREFIX=$PREFIX
+LIBDIR=\$(PREFIX)/lib
+SBINDIR=\$(PREFIX)/sbin
+CONFDIR=\$(PREFIX)/etc/iproute2
+DATADIR=\$(PREFIX)/share
+DOCDIR=\$(DATADIR)/doc/iproute2
+MANDIR=\$(DATADIR)/man
+ARPDDIR=\$(PREFIX)/var/lib/arpd
+
+EOF
+
+wait
+
+cat pippo Makefile.tmp > Makefile
+
+wait
