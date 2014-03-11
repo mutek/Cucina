@@ -80,6 +80,16 @@ do
 
 	echo "Scarico: "$ARCHIVE" da "$SOURCE_URL
 	[ ! -f $ARCHIVE ] && curl $SOURCE_URL > $ARCHIVE
+        echo "" >> $APP_NAME.log
+        echo "env" >> $APP_NAME.log
+        echo "" >> $APP_NAME.log
+	env >> $APP_NAME.log
+
+        echo "" >> $APP_NAME.log
+        echo "alias " >> $APP_NAME.log
+        echo "" >> $APP_NAME.log
+	alias >> $APP_NAME.log
+
 	ls --color
 
 	echo "provo ad estrarre"
@@ -98,11 +108,15 @@ do
 	echo "" >> $APP_NAME.log
 
 	cd $PROGRAM_NAME-$RELEASE
-	./configure --prefix=$PREFIX "$CONFIGURE_OPTIONS" >> ../$APP_NAME.log
+	./configure --prefix=$PREFIX $CONFIGURE_OPTIONS >> ../$APP_NAME.log
 
 	# un pizzico di fantasia prima di cuocere la pietanza
 
-	[ -f ../$PROGRAM_NAME.pre-cook ] && . ../$PROGRAM_NAME.pre-cook
+        echo "" >> ../$APP_NAME.log
+        echo "$PROGRAM_NAME.pre-cook" >> ../$APP_NAME.log
+        echo "" >> ../$APP_NAME.log	
+
+	[ -f ../$PROGRAM_NAME.pre-cook ] && . ../$PROGRAM_NAME.pre-cook && cat ../$PROGRAM_NAME.pre-cook >> ../$APP_NAME.log
 
 	echo "" >> ../$APP_NAME.log
 	echo "make" >> ../$APP_NAME.log
