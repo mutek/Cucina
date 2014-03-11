@@ -1,0 +1,17 @@
+# NGINX
+RELEASE=1.5.11
+PROGRAM_NAME=nginx
+ARCHIVE_TYPE="tar.gz"
+APP_NAME=Nginx
+DISTRO=Debian7
+KERNEL=Linux
+ARCH=ia32
+PREFIX_ROOT=/opt
+SOURCE_URL="http://nginx.org/download/nginx-1.5.11.tar.gz"
+STRIP_ALL=true
+CONFIGURE_OPTIONS="--user=nobody --group=nogroup"
+MD5SUM=""
+SHA1SUM=""
+SHA256SUM=""
+SHA512SUM=""
+APTGET_BUILDDEP=true
