@@ -1,0 +1,17 @@
+# PYTHON
+RELEASE=3.3.5
+PROGRAM_NAME=Python
+ARCHIVE_TYPE="tar.xz"
+APP_NAME=Python
+DISTRO=Debian7
+KERNEL=Linux
+ARCH=ia32
+PREFIX_ROOT=/opt
+SOURCE_URL="http://legacy.python.org/ftp/python/3.3.5/Python-3.3.5.tar.xz"
+STRIP_ALL=true
+CONFIGURE_OPTIONS=""
+MD5SUM=""
+SHA1SUM=""
+SHA256SUM=""
+SHA512SUM=""
+APTGET_BUILDDEP=true
