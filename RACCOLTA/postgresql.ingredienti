@@ -1,0 +1,17 @@
+# POSTGRESQL
+RELEASE=9.3.3
+PROGRAM_NAME=postgresql
+ARCHIVE_TYPE="tar.bz2"
+APP_NAME=Postgresql
+DISTRO=Debian7
+KERNEL=Linux
+ARCH=amd64
+PREFIX_ROOT=/opt
+SOURCE_URL="http://ftp.postgresql.org/pub/source/v9.3.3/postgresql-9.3.3.tar.bz2"
+STRIP_ALL=true
+CONFIGURE_OPTIONS=""
+MD5SUM=""
+SHA1SUM=""
+SHA256SUM=""
+SHA512SUM=""
+APTGET_BUILDDEP=true
