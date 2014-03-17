@@ -79,7 +79,7 @@ do
 	mkdir -p $PREFIX
 
 	echo "Scarico: "$ARCHIVE" da "$SOURCE_URL
-	[ ! -f $ARCHIVE ] && curl $SOURCE_URL > $ARCHIVE
+	[ ! -f $ARCHIVE ] && curl -L $SOURCE_URL > $ARCHIVE
         echo "" >> $APP_NAME.log
         echo "env" >> $APP_NAME.log
         echo "" >> $APP_NAME.log

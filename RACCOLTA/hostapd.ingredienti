@@ -1,0 +1,17 @@
+# HOSTAPD
+RELEASE=2.1
+PROGRAM_NAME=hostapd
+ARCHIVE_TYPE="tar.gz"
+APP_NAME=Hostapd
+DISTRO=Debian7
+KERNEL=Linux
+ARCH=ia32
+PREFIX_ROOT=/opt
+SOURCE_URL="http://w1.fi/releases/hostapd-2.1.tar.gz"
+STRIP_ALL=true
+CONFIGURE_OPTIONS=""
+MD5SUM=""
+SHA1SUM=""
+SHA256SUM=""
+SHA512SUM=""
+APTGET_BUILDDEP=true
