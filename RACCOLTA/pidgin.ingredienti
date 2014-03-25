@@ -1,0 +1,17 @@
+# PIDGIN
+RELEASE=2.10.9
+PROGRAM_NAME=pidgin
+ARCHIVE_TYPE="tar.bz2"
+APP_NAME=Pidgin
+DISTRO=Debian7
+KERNEL=Linux
+ARCH=ia32
+PREFIX_ROOT=/opt
+SOURCE_URL="http://sourceforge.net/projects/pidgin/files/Pidgin/2.10.9/pidgin-2.10.9.tar.bz2"
+STRIP_ALL=true
+CONFIGURE_OPTIONS=""
+MD5SUM=""
+SHA1SUM=""
+SHA256SUM=""
+SHA512SUM=""
+APTGET_BUILDDEP=true
