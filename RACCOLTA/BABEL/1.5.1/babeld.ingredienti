@@ -1,0 +1,16 @@
+# BABEL
+RELEASE=1.5.1
+PROGRAM_NAME=babeld
+ARCHIVE_TYPE="tar.gz"
+APP_NAME=Babel
+DISTRO=Debian7
+KERNEL=Linux
+ARCH=amd64
+PREFIX_ROOT=/home/Babel/.App
+SOURCE_URL="http://www.pps.univ-paris-diderot.fr/~jch/software/files/babeld-1.4.3.tar.gz"
+STRIP_ALL=true
+CONFIGURE_OPTIONS=""
+MD5SUM=""
+SHA1SUM=""
+SHA256SUM=""
+SHA512SUM=""

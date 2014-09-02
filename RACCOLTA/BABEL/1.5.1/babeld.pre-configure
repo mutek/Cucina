@@ -1,0 +1,6 @@
+# bug in 1.5.1 che estrae in archivio 1.4.3
+# workaround cambiando nome all'archivio estratto
+
+echo "--- PRE CONFIGURE ---"
+mv babeld-1.4.3 babeld-$RELEASE
+echo ""
