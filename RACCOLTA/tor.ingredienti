@@ -1,13 +1,13 @@
 # TOR
-RELEASE=0.2.4.21
+RELEASE=0.2.4.23
 PROGRAM_NAME=tor
 ARCHIVE_TYPE="tar.gz"
 APP_NAME=Tor
 DISTRO=Debian7
 KERNEL=Linux
-ARCH=ia32
+ARCH=amd64
 PREFIX_ROOT=/opt
-SOURCE_URL="https://www.torproject.org/dist/tor-0.2.4.21.tar.gz"
+SOURCE_URL="https://www.torproject.org/dist/tor-0.2.4.23.tar.gz"
 STRIP_ALL=true
 CONFIGURE_OPTIONS=""
 MD5SUM=""
