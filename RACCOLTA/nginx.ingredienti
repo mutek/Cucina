@@ -1,5 +1,5 @@
 # NGINX
-RELEASE=1.7.1
+RELEASE=1.7.4
 PROGRAM_NAME=nginx
 ARCHIVE_TYPE="tar.gz"
 APP_NAME=Nginx
@@ -7,7 +7,7 @@ DISTRO=Debian7
 KERNEL=Linux
 ARCH=amd64
 PREFIX_ROOT=/opt
-SOURCE_URL="http://nginx.org/download/nginx-1.7.1.tar.gz"
+SOURCE_URL="http://nginx.org/download/nginx-1.7.4.tar.gz"
 STRIP_ALL=true
 CONFIGURE_OPTIONS="--user=nobody --group=nogroup --with-http_ssl_module"
 MD5SUM=""
