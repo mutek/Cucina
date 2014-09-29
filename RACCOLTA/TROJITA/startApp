@@ -1,0 +1,38 @@
+#!/usr/bin/env sh
+# )A( - Andromeda
+#
+# startApp wrapper
+#
+# (c) 2010-2013 Luca Cappelletti <luca.cappelletti@gmail.com>
+#
+# copyleft GNU/GPL all rights reserved
+#
+# do not forget now you have .cache/Volatile full private temp folder service
+# made by startApp
+
+options="$@"
+
+APP_NAME=Trojita
+APP_RELEASE=0.4.1
+APP_KERNEL=Linux
+APP_OS=Debian7
+APP_PLATFORM=amd64
+
+APP_BIN=trojita
+
+APP_ROOT=io$APP_NAME$APP_RELEASE-$APP_OS
+SANDBOX_HOME=$APP_NAME
+
+
+export LD_LIBRARY_PATH=/home/$APP_NAME/.App/$APP_ROOT/$APP_KERNEL-$APP_PLATFORM/support:/home/$APP_NAME/.App/$APP_ROOT/$APP_KERNEL-$APP_PLATFORM/lib:$LD_LIBRARY_PATH
+export PATH=/home/$APP_NAME/.App/$APP_ROOT/$APP_KERNEL-$APP_PLATFORM/bin:$PATH
+
+cd $HOME
+
+/home/$APP_NAME/.App/$APP_ROOT/$APP_KERNEL-$APP_PLATFORM/bin/$APP_BIN $options
+wait
+
+killall -SIGTERM $APP_BIN
+wait
+killall -u $APP_NAME
+

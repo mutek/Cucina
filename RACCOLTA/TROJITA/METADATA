@@ -1,0 +1,9 @@
+APP_NAME=Trojita
+APP_RELEASE=0.4.1
+APP_KERNEL=Linux
+APP_OS=Debian7
+APP_PLATFORM=amd64
+APP_BIN=startApp
+APP_ROOT=Trojita/0.4.1/Debian7/Linux/amd64
+
+
