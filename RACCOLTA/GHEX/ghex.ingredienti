@@ -1,0 +1,17 @@
+# GHEX
+RELEASE=3.10.1
+PROGRAM_NAME=ghex
+ARCHIVE_TYPE="tar.xz"
+APP_NAME=Ghex
+DISTRO=Debian7
+KERNEL=Linux
+ARCH=amd64
+PREFIX_ROOT=/home/Ghex/.App
+SOURCE_URL="http://ftp.acc.umu.se/pub/GNOME/sources/ghex/3.10/ghex-3.10.1.tar.xz"
+STRIP_ALL=true
+CONFIGURE_OPTIONS=" --disable-schemas-compile  --disable-maintainer-mode  --enable-compile-warnings=no "
+MD5SUM=""
+SHA1SUM=""
+SHA256SUM=""
+SHA512SUM=""
+APTGET_BUILDDEP=true
