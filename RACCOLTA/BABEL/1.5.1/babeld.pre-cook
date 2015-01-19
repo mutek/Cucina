@@ -4,22 +4,31 @@ echo "PREFIX = "$PREFIX > /tmp/$APP_NAME.prefix
 echo "pre.cook: PREFIX="$PREFIX
 
 echo "" >> /tmp/$APP_NAME.prefix
+wait
 
 chmod 600 /tmp/$APP_NAME.prefix
+wait
 
 cat Makefile > /tmp/$APP_NAME.Makefile
+wait
 
 chmod 600 /tmp/$APP_NAME.Makefile
+wait
 
 sed -i '/PREFIX = /d' /tmp/$APP_NAME.Makefile
+wait
 
 cat /tmp/$APP_NAME.prefix /tmp/$APP_NAME.Makefile > /tmp/$APP_NAME.makefile
+wait
 
 chmod 600 /tmp/$APP_NAME.makefile
+wait
 
 mv Makefile Makefile.backup.$(date +%s)
+wait
 
 cp /tmp/$APP_NAME.makefile ./Makefile
+wait
 
 #nano Makefile
 
