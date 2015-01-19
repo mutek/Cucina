@@ -1,0 +1,17 @@
+# GIT
+RELEASE=2.2.2
+PROGRAM_NAME=git
+ARCHIVE_TYPE="tar.gz"
+APP_NAME=Git
+DISTRO=Debian7
+KERNEL=Linux
+ARCH=amd64
+PREFIX_ROOT=/home/Git/.App
+SOURCE_URL="https://www.kernel.org/pub/software/scm/git/git-2.2.2.tar.gz"
+STRIP_ALL=true
+CONFIGURE_OPTIONS=""
+MD5SUM=""
+SHA1SUM=""
+SHA256SUM=""
+SHA512SUM=""
+APTGET_BUILDDEP=true
