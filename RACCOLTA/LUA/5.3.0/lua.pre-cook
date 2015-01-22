@@ -1,0 +1,22 @@
+apt-get build-dep lua5.2
+echo ""
+echo "PRECOOK ls"
+ls --color
+
+
+echo ""
+echo "PREFIX = "$PREFIX
+# press ESC to EXIT
+PREFIX_ESCAPED=$(echo $PREFIX | sed -e 's/\\/\\\\/g' -e 's/\//\\\//g' -e 's/&/\\\&/g')
+echo "PREFIX_ESCAPED = "$PREFIX_ESCAPED
+
+echo "applying sed..."
+sed -i "s/\/usr\/local/$PREFIX_ESCAPED/g" Makefile
+
+sed -i 's/PLAT= none/PLAT= linux/g' Makefile
+sed -i 's/PLAT= none/PLAT= linux/g' src/Makefile
+
+echo ""
+echo "Makefile:"
+cat Makefile
+echo ""

@@ -1,8 +1,8 @@
 #!/usr/bin/env sh
+# 
+# prepara.ricetta 1.2
 #
-# prepara.ricetta
-#
-# 2014 mutek <mutek _A_T_ riseup _D_O_T_ net>
+# 2014-2015 mutek <mutek _A_T_ riseup _D_O_T_ net>
 # WTF
 #
 # cuoce una ricetta letta dal file NOME.ingredienti
@@ -133,6 +133,16 @@ do
 
 	make >> ../$APP_NAME.log || exit 1
 	wait
+
+#########################################
+# POST MAKE
+#########################################
+        echo "" >> ../$APP_NAME.log
+        echo "$PROGRAM_NAME.post-make" >> ../$APP_NAME.log
+        echo "" >> ../$APP_NAME.log
+
+        [ -f ../$PROGRAM_NAME.post-make ] && . ../$PROGRAM_NAME.post-make && cat ../$PROGRAM_NAME.post-make >> ../$APP_NAME.log
+
 
         echo "" >> ../$APP_NAME.log
         echo "make install" >> ../$APP_NAME.log
