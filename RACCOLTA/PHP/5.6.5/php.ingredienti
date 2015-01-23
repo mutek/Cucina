@@ -1,0 +1,17 @@
+# PHP
+RELEASE=5.6.5
+PROGRAM_NAME=php
+ARCHIVE_TYPE="tar.bz2"
+APP_NAME=Php
+DISTRO=Debian7
+KERNEL=Linux
+ARCH=amd64
+PREFIX_ROOT=/home/Php/.App
+SOURCE_URL="http://de2.php.net/get/php-5.6.5.tar.bz2/from/this/mirror"
+STRIP_ALL=true
+CONFIGURE_OPTIONS=""
+MD5SUM=""
+SHA1SUM=""
+SHA256SUM=""
+SHA512SUM=""
+APTGET_BUILDDEP=true
