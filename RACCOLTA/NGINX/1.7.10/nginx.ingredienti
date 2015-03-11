@@ -1,0 +1,17 @@
+# NGINX
+RELEASE=1.7.10
+PROGRAM_NAME=nginx
+ARCHIVE_TYPE="tar.gz"
+APP_NAME=Nginx
+DISTRO=Debian7
+KERNEL=Linux
+ARCH=amd64
+PREFIX_ROOT=/opt
+SOURCE_URL="http://nginx.org/download/nginx-1.7.10.tar.gz"
+STRIP_ALL=true
+CONFIGURE_OPTIONS="--user=nobody --group=nogroup --with-http_ssl_module --with-ipv6 --with-http_degradation_module --with-http_gzip_static_module --with-http_gunzip_module --with-http_spdy_module --with-http_realip_module --with-http_stub_status_module"
+MD5SUM=""
+SHA1SUM=""
+SHA256SUM=""
+SHA512SUM=""
+APTGET_BUILDDEP=true
