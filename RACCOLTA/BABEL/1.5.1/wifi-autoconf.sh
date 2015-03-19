@@ -45,6 +45,9 @@ findcmd iwconfig "wireless-tools"
 findcmd babeld
 findcmd ahcpd
 
+modprobe ipv6
+wait
+
 (ip -6 addr show dev lo | grep -q 'inet6') || \
     die "No IPv6 address on lo, please modprobe ipv6"
 
