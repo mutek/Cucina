@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 # 
-# prepara.ricetta 1.2
+# prepara.ricetta 1.4
 #
 # 2014-2015 mutek <mutek _A_T_ riseup _D_O_T_ net>
 # WTF
@@ -54,11 +54,12 @@ do
 	[ -z $APTGET_BUILDDEP ] && APTGET_BUILDDEP=true
 	[ -z $YUM_BUILDDEP ] && YUM_BUILDDEP=false
 	[ -z $EMERGE_O ] && $EMERGE_O=false
+	[ -z $APTGET_BUILDDEP_PACKAGENAME ] && APTGET_BUILDDEP_PACKAGENAME=""
 	# ----------------------------------------------------------------
 
 	echo "APTGET_BUILDDEP = "$APTGET_BUILDDEP
 
-	[ "$APTGET_BUILDDEP" = "true" ] && apt-get build-dep $PROGRAM_NAME
+	[ "$APTGET_BUILDDEP" = "true" ] && apt-get build-dep $APTGET_BUILDDEP_PACKAGENAME && apt-get clean
         [ "$YUM_BUILDDEP" = "true" ] && yum builddep $PROGRAM_NAME
 	[ "$EMERGE_O" = "true" ] && emerge -o $PROGRAM_NAME
 
