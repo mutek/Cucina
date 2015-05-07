@@ -1,0 +1,951 @@
+babeld [-m multicast_address] [-p port] [-S state-file]
+                [-h hello] [-H wired_hello] [-z kind[,factor]]
+                [-k metric] [-A metric] [-s] [-l] [-w] [-r] [-u] [-g port]
+                [-t table] [-T table] [-c file] [-C statement]
+                [-d level] [-D] [-L logfile] [-I pidfile]
+                [id] interface...
+
+
+
+BABELD(8)                                                                                                                BABELD(8)
+
+
+
+NAME
+       babeld - ad-hoc network routing daemon
+
+SYNOPSIS
+       babeld option...  [ -- ] interface...
+
+DESCRIPTION
+       Babel is a loop-avoiding distance-vector routing protocol roughly based on DSDV and AODV, but with provisions for link cost
+       estimation and redistribution of routes from other routing protocols.
+
+       While it is optimised for wireless mesh networks, Babel will also work efficiently on wired networks.
+
+OPTIONS
+       -m multicast-address
+              Specify the link-local multicast address to be used by the protocol.  The default is ff02:0:0:0:0:0:1:6.
+
+       -p port
+              Specify the UDP port number to be used by the protocol.  The default is 6696.
+
+       -S state-file
+              Set the name of the file used for preserving long-term information between invocations of  the  babeld  daemon.   If
+              this  file is deleted, the daemon will run in passive mode for 3 minutes when it is next started (see -P below), and
+              other hosts might initially ignore it.  The default is /var/lib/babel-state.
+
+       -h hello-interval
+              Specify the interval in seconds at which scheduled hello packets are sent on wireless interfaces.  The default is  4
+              seconds.
+
+       -H wired-hello-interval
+              Specify  the  interval  in  seconds at which scheduled hello packets are sent on wired interfaces.  The default is 4
+              seconds.
+
+       -z kind [,factor]
+              Enable diversity-sensitive routing.  The value kind defines the diversity algorithm used, and can be one  of  0  (no
+              diversity),  1 (per-interface diversity with no memory), 2 (per-channel diversity with no memory), or 3 (per-channel
+              diversity with memory).  The value factor specifies by how much the cost of non-interfering routes is multiplied, in
+              units of 1/256; the default is 128 (i.e. division by 2).
+
+       -M half-time
+              Specify the half-time in seconds of the exponential decay used for smoothing metrics for performing route selection;
+              the value 0 disables smoothing.  The default is 4s.
+
+       -k priority
+              Specify the priority value used when installing routes into the kernel.  The default is 0.
+
+       -A priority
+              Allow duplicating external routes when their kernel priority is at least priority.  Do not use  this  option  unless
+              you know what you are doing, as it can cause persistent route flapping.
+
+       -l     Use IFF_RUNNING (carrier sense) when determining interface availability.
+
+       -w     Don't  optimise  wired  links,  assume all interfaces are wireless unless explicitly overridden in the configuration
+              file.
+
+       -s     Do not perform split-horizon processing on wired interfaces.  Split-horizon is not performed on wireless interfaces.
+
+       -r     Use a random router-id.  The default is to use persistent router-ids derived from  the  MAC  address  of  the  first
+              interface,  which  is  easier to debug and more reliably prevents routing loops but may sometimes cause a node to be
+              unreachable for 120 seconds just after boot.
+
+       -u     Do not flush unfeasible (useless) routes.  This is useful in order to announce more information to a front-end  (see
+              -g).
+
+       -d level
+              Debug level.  A value of 1 requests a routing table dump at every iteration through the daemon's main loop.  A value
+              of 2 additionally requests tracing every message sent or received.  A value of 3 additionally dumps all interactions
+              with the OS kernel.  The default is 0.
+
+       -g port
+              Listen for connections from a front-end on port port.
+
+       -t table
+              Use the given kernel routing table for routes inserted by babeld.
+
+       -T table
+              Export  routes  from  the given kernel routing table. This can be specified multiple times in order to export routes
+              from more than one table.
+
+       -c filename
+              Specify the name  of  the  configuration  file.   This  flag  can  be  repeated  multiple  times.   The  default  is
+              /etc/babeld.conf.
+
+       -C statement
+              Specify a configuration statement directly on the command line.
+
+       -D     Daemonise at startup.
+
+       -L logfile
+              Specify  a  file  to log random ``how do you do?'' messages to.  This defaults to standard error if not daemonising,
+              and to /var/log/babeld.log otherwise.
+
+       -I pidfile
+              Specify a file to write our process id to.  The default is /var/run/babeld.pid.
+
+       interface...
+              The list of interfaces on which the protocol should operate.
+
+CONFIGURATION FILE FORMAT
+       The configuration file is a sequence of lines each of which specifies a global option, an interface specification or a fil-
+       tering rule.  Comments are introduced by an octothorp ``#'' and terminate at the end of the line.
+
+   Global options
+       protocol-group group
+              This  specifies  the  link-local multicast address to be used by the protocol, and is equivalent to the command-line
+              option -m.
+
+       protocol-port port
+              This specifies the UDP port number to be used by the protocol, and is equivalent to the command-line option -p.
+
+       kernel-priority priority
+              This specifies the priority value used when installing routes into the kernel, and is equivalent to the command-line
+              option -k.
+
+       reflect-kernel-metric {true|false}
+              Reflect route metrics as kernel priorities.  The priority effectively used is kernel-priority + metric.
+
+       allow-duplicates priority
+              This  allows  duplicating  external  routes when their kernel priority is at least priority.  Do not use this option
+              unless you know what you are doing, as it can cause persistent route flapping.
+
+       keep-unfeasible {true|false}
+              This specifies whether to keep unfeasible (useless) routes, and is equivalent to the command-line option -u.
+
+       random-id {true|false}
+              This specifies whether to use a random router-id, and is equivalent to the command-line option -r.
+
+       ipv6-subtrees {true|false}
+              This specifies whether to use native source-specific IPv6 forwarding  rather  than  multiple  routing  tables.   The
+              default is false, setting this to true is recommended on sufficiently recent Linux kernels.
+
+       debug level
+              This specifies the debugging level, and is equivalent to the command-line option -d.
+
+       local-port port
+              This  specifies  the TCP port on which babeld will listen for connections from a front-end, and is equivalent to the
+              command-line option -g.
+
+       export-table table
+              This specifies the kernel routing table to use for routes inserted by babeld, and is equivalent to the  command-line
+              option -t.
+
+       import-table table
+              This  specifies  a kernel routing table from which routes are redistributed by babeld, and can be specified multiple
+              times with a cumulative effect.  This is equivalent to the command-line option -T.
+
+       link-detect {true|false}
+              This specifies whether to use carrier sense for determining interface availability, and is equivalent  to  the  com-
+              mand-line option -l.
+
+       diversity {true|false|kind}
+              This  specifies  the diversity algorithm to use; true is equivalent to kind 3.  The default is false (do not use any
+              diversity algorithm).
+
+       diversity-factor factor
+              This specifies by how much the cost of non-interfering routes should be multiplied, in units of 1/256.  The  default
+              is 128 (division by 2).
+
+       smoothing-half-life seconds
+              This  specifies  the  half-life  in seconds of the exponential decay used for smoothing metrics for performing route
+              selection, and is equivalent to the command-line option -M.
+
+       deamonise {true|false}
+              This specifies whether to daemonize at startup, and is equivalent to the command-line option -D.
+
+       state-file filename
+              This specifies the name of the file used for preserving long-term information between invocations of the babeld dae-
+              mon, and is equivalent to the command-line option -S.
+
+       log-file filename
+              This specifies the name of the file used to log random messages to, and is equivalent to the command-line option -L.
+
+       pid-file filename
+              This specifies the name of the file to which babeld writes out its process id, and is equivalent to the command-line
+              option -I.
+
+       first-table-number table
+              This specifies the index of the first routing table to use for source-specific routes.  The default is 10.
+
+       first-rule-priority priority
+              This specifies smallest (highest) rule priority used with source-specific routes.  The default is 100.
+
+   Interface configuration
+       An interface is configured by a line with the following format:
+
+              interface name [parameter...]
+
+       where name is the name of the interface (something like eth0).  The default value of an interface parameter can  be  speci-
+       fied changed by a line of the form
+
+              default [parameter...]
+
+       Each parameter can be one of:
+
+       wired {true|false|auto}
+              This  specifies  whether to enable optimisations specific to wired interfaces.  By default, this is determined auto-
+              matically unless the -w command-line flag was specified.
+
+       link-quality {true|false|auto}
+              This specifies whether link quality estimation should be performed on this interface.  The  default  is  to  perform
+              link quality estimation on wireless interfaces but not on wired interfaces.
+
+       split-horizon {true|false|auto}
+              This  specifies  whether  to  perform  split-horizon  processing on this interface.  The default is to never perform
+              split-horizon processing on wireless interfaces; on wired interfaces, the default depends on the -s flag.
+
+       rxcost cost
+              This defines the cost of receiving frames on the given interface under ideal conditions (no packet loss);  how  this
+              relates to the actual cost used for computing metrics of routes going through this interface depends on whether link
+              quality estimation is being done.  The default is 96 for wired interfaces, and 256 for wireless ones.
+
+       channel channel
+              Sets the channel for this interface.  The value channel can be either an integer, or one of the strings  interfering
+              or  noninterfering.  The default is to autodetect the channel number for wireless interfaces, and noninterfering for
+              wired interfaces.
+
+       faraway {true|false}
+              This specifies whether the network is "far away", in the sense that networks behind it don't interfere with networks
+              in front of it.  By default, networks are not far away.
+
+       hello-interval interval
+              This defines the interval between hello packets sent on this interface.  The default is specified with the -h and -H
+              command-line flags.
+
+       update-interval interval
+              This defines the interval between full routing table dumps sent  on  this  interface;  since  Babel  uses  triggered
+              updates  and  doesn't  count to infinity, this can be set to a fairly large value, unless significant packet loss is
+              expected.  The default is four times the hello interval.
+
+       enable-timestamps {true|false}
+              Enable sending timestamps with each Hello and IHU message in order to compute RTT values.  The default  is  true  if
+              max-rtt-penalty is non-zero (see below), and false otherwise.
+
+       rtt-decay decay
+              This  specifies  the  decay  factor  for  the exponential moving average of RTT samples, in units of 1/256.  Must be
+              between 1 and 256, inclusive.  Higher values discard old samples faster.  The default is 42.
+
+       rtt-min rtt
+              This specifies the minimum RTT, in milliseconds, starting from which we increase the cost to a neighbour. The  addi-
+              tional cost is linear in (rtt - rtt-min).  The default is 10 ms.
+
+       rtt-max rtt
+              This  specifies the maximum RTT, in milliseconds, above which we don't increase the cost to a neighbour. The default
+              is 120 ms.
+
+       max-rtt-penalty cost
+              This specifies the maximum cost added to a neighbour because of RTT, i.e. when the  RTT  is  higher  or  equal  than
+              rtt-max.  The default is 0, which effectively disables the use of a RTT-based cost.
+
+   Filtering rules
+       A filtering rule is defined by a single line with the following format:
+
+              filter selector...  action
+
+       Filter specifies the filter to which this entry will be added, and can be one of in, out, or redistribute.
+
+       Each selector specifies the conditions under which the given statement matches.  It can be one of
+
+       ip prefix
+              This entry only applies to routes in the given prefix.
+
+       eq plen
+              This entry only applies to routes with a prefix length equal to plen.
+
+       le plen
+              This entry only applies to routes with a prefix length less or equal to plen.
+
+       ge plen
+              This entry only applies to routes with a prefix length greater or equal to plen.
+
+       src-ip prefix
+              This entry only applies to routes with a source prefix in the given prefix.
+
+       src-eq plen
+              This entry only applies to routes with a source prefix length equal to plen.
+
+       src-le plen
+              This entry only applies to routes with a source prefix length less or equal to plen.
+
+       src-ge plen
+              This entry only applies to routes with a source prefix length greater or equal to plen.
+
+       neigh address
+              This entry only applies to routes learned from a neighbour with link-local address address.
+
+       id id  This entry only applies to routes originated by a router with router-id id.
+
+       proto p
+              This  entry  only  applies to kernel routes with kernel protocol number p.  If neither proto nor local is specified,
+              this entry applies to all non-local kernel routes with a protocol different from "boot".
+
+       local  This entry only applies to local addresses.
+
+       if interface
+              For an input filter, this specifies the interface over which the route is learned.  For an output filter, this spec-
+              ifies the interface over which this route is advertised.  For a redistribute statement, this specifies the interface
+              over which the route forwards packets.
+
+       Action specifies the action to be taken when this entry matches.  It can have one of the following values:
+
+       allow  Allow this route, without changing its metric (or setting its metric to 0 in case of a redistribute filter).
+
+       deny   Ignore this route.
+
+       metric value
+              For an input or output filter, allow this route after increasing its metric by value.  For  a  redistribute  filter,
+              redistribute this route with metric value.
+
+       src-prefix prefix
+              For a redistribute filter, set the source prefix of this route to prefix.
+
+       If action is not specified, it defaults to allow.
+
+       By  default, babeld redistributes all local addresses, and no other routes.  In order to make sure that only the routes you
+       specify are redistributed, you should include the line
+
+              redistribute local deny
+
+       as the last line in your configuration file.
+
+EXAMPLES
+       You can participate in a Babel network by simply running
+
+              # babeld wlan0
+
+       where wlan0 is the name of your wireless interface.
+
+       In order to gateway between multiple interfaces, just list them all on the command line:
+
+              # babeld wlan0 eth0 sit1
+
+       On an access point, you'll probably want to redistribute some external routes into Babel:
+
+              # babeld \
+                  -C 'redistribute metric 256' \
+                  wlan0
+
+       or, if you want to constrain the routes that you redistribute,
+
+              # babeld \
+                  -C 'redistribute proto 11 ip ::/0 le 64 metric 256' \
+                  -C 'redistribute proto 11 ip 0.0.0.0/0 le 24 metric 256' \
+                  wlan0
+
+   Source-sensitive routing
+       If your want to redistribute kernel routes as source-specific to the network, with the 2001:DB8:0:1::/64 prefix:
+
+              redistribute src-prefix 2001:DB8:0:1::/64
+
+FILES
+       /etc/babeld.conf
+              The default location of the configuration file.
+
+       /var/lib/babel-state
+              The default location of the file storing long-term state.
+
+       /var/run/babeld.pid
+              The default location of the pid file.
+
+       /var/log/babeld.log
+              The default location of the log file.
+
+SIGNALS
+       SIGUSR1
+              Dump Babel's routing tables to standard output or to the log file.
+
+       SIGUSR2
+              Check interfaces and kernel routes right now, then reopen the log file.
+
+SECURITY
+       Babel is a completely insecure protocol: any attacker able to inject IP packets with a link-local source address  can  dis-
+       rupt the protocol's operation.  This is no different from unsecured neighbour discovery or ARP.
+
+       Since  Babel  uses link-local IPv6 packets only, there is no need to update firewalls to allow forwarding of Babel protocol
+       packets.  If local filtering is being done, UDP datagrams to the port used by the protocol should  be  allowed.   As  Babel
+       uses unicast packets in some cases, it is not enough to just allow packets destined to Babel's multicast address.
+
+BUGS
+       Plenty.  This is experimental software, run at your own risk.
+
+SEE ALSO
+       routed(8), route6d(8), zebra(8), ahcpd(8).
+
+AUTHOR
+       Juliusz Chroboczek.
+
+
+
+                                                                                                                         BABELD(8)
+Babel
+=====
+
+Babel is a loop-avoiding distance-vector routing protocol roughly
+based on HSDV and AODV, but with provisions for link cost estimation
+and redistribution of routes from other routing protocols.
+
+
+Installation
+============
+
+    $ make
+    $ su -c 'make install'
+
+If compiling for OpenWRT, you will probably want to say something like
+
+    $ make CC=mipsel-linux-gcc PLATFORM_DEFINES='-march=mips32'
+
+On Mac OS X, you'll need to do
+
+    $ make LDLIBS=''
+
+
+Setting up a network for use with Babel
+=======================================
+
+1. Set up every node's interface
+--------------------------------
+
+On every node, set up the wireless interface:
+
+    # iwconfig eth1 mode ad-hoc channel 11 essid "my-mesh-network"
+    # ip link set up dev eth1
+
+2. Set up every node's IP addresses
+-----------------------------------
+
+You will need to make sure that all of your nodes have a unique IPv6
+address, and/or a unique IPv4 address.
+
+On every node, run something like:
+
+    # ip addr add 192.168.13.33/32 dev eth1
+    # ip -6 addr add $(generate-ipv6-address -r)/128 dev eth1
+
+You will find the generate-ipv6-address utility, which can generate random
+IPv6 addresses according to RFC 4193, on
+
+      http://www.pps.univ-paris-diderot.fr/~jch/software/files/
+
+
+A note about tunnels and VPNs
+-----------------------------
+
+Some VPN implementations (notably OpenVPN and Linux GRE) do not
+automatically add an IPv6 link-local address to the tunnel interface.
+If you attempt to run Babel over such an interface, it will complain
+that it ``couldn't allocate requested address''.
+
+The solution is to manually add the link-local address to the
+interface.  This can be done by running e.g.
+
+    # ip -6 addr add $(ahcp-generate-address fe80::) dev gre0
+
+
+3. Start the routing daemon
+---------------------------
+
+Run Babel on every node, specifying the set of interfaces that it
+should consider:
+
+    # babeld eth1
+
+If your node has multiple interfaces which you want to participate in
+the Babel network, just list them all:
+
+    # babeld eth0 eth1 sit1
+
+
+4. Setting up an Internet gateway
+---------------------------------
+
+If you have one or more Internet gateways on your mesh network, you
+will want to set them up so that they redistribute the default route.
+Babel will only redistribute routes with an explicit protocol
+attached, so you must say something like:
+
+    # ip route add 0.0.0.0/0 via 1.2.3.4 dev eth0 proto static
+
+In order to redistribute all routes, you will say:
+
+    # babeld -C 'redistribute metric 128' eth1
+
+You may also be more selective in the routes you redistribute, for
+instance by specifying the interface over which the route goes out:
+
+    # babeld -C 'redistribute if eth0 metric 128' eth1
+
+or by constraining the prefix length:
+
+    # babeld -C 'redistribute ip ::/0 le 64 metric 128' \
+             -C 'redistribute ip 0.0.0.0/0 le 28 metric 128' \
+             eth1
+
+You may also want to constrain which local routes (routes to local
+interface addresses) you advertise:
+
+    # babeld -C 'redistribute local if eth1' -C 'redistribute local deny' \
+             -C 'redistribute metric 128' \
+             eth1
+
+If you find all of this too complicated and error-prone (as I do), you
+may want to consider autoconfiguring your routing domain using AHCP:
+
+    http://www.pps.univ-paris-diderot.fr/~jch/software/ahcp/
+
+-- Juliusz Chroboczek
+14 April 2014: babeld-1.6.0
+
+  * Added support for source-specific routing.  Thanks to Matthieu Boutier.
+  * Added support for reflecting metrics as kernel priorities.  Thanks to
+    Pierre Pfister.
+  * Worked around a Linux kernel bug with an infinite EAGAIN loop.  Thanks
+    to Dave Taht.
+  * Changed wildcard updates to not set flag 0x40.  Reported by Markus
+    Stenberg.
+  * Made ipv6-subtrees a runtime option.  Thanks to Matthieu Boutier.
+
+4 July 2014: babeld-1.5.1:
+
+  * Added support for reading multiple configuration files by specifying
+    the -c command-line flag multiple times.
+  * Be less noisy about unknown TLV types.  Thanks to Baptiste Jonglez.
+
+22 May 2014: babeld-1.5.0
+
+  * Added support for an RTT-based metric -- see the description of
+    "enable-timestamps" in the manual page.  This work was done by
+    Baptiste Jonglez with help from Matthieu Boutier.
+
+15 November 2013: babeld-1.4.3
+
+  * Added random-id option to config file (equivalent to -r).
+  * Fixed parsing of compressed IPv4 updates.  Thanks to Matthieu Boutier.
+  * Fixed formatting of seqno requests with short prefixes.  Thanks to
+    Matthieu Boutier.
+  * Fixed possible DoS on the local interface.  Thanks to Baptiste Jonglez.
+  * Fixed advertising costs higher than INFINITY on the local interface.
+    Thanks to Baptiste Jonglez.
+  * Fixed an assertion failure when an interface configuration is
+    split into multiple config file directives.
+  * Disable atomic route changes on BSD, which are buggy at least under
+    Mac OS X.  Thanks to Grégoire Henry.
+
+19 June 2013: babeld-1.4.2
+
+  * Extensive changes to the configuration parser.  It is now possible
+    to set all command-line options from the configuration file, and
+    to specify default values for interface parameters.
+  * Allow redistributing routes from multiple kernel tables.  Thanks
+    to Toke Høiland-Jørgensen.
+  * Fix some whitespace issues in the configuration parser.
+  * Fix a bug in the configuration parser that could give wrong values
+    to some exotic interface parameters (channel and faraway).
+  * Fix a bug that could cause some extra traffic at shutdown.  Thanks
+    to Matthieu Boutier.
+  * Under Linux, set rp_filter explicitly for all interfaces.  This
+    avoids mysterious routing failures on distributions that set
+    rp_filter by default.  Reported by Baptiste Jonglez.
+
+19 June 2013: babeld-1.3.8
+
+  * Fix a bug in the configuration parser that could give wrong values
+    to some exotic interface parameters (channel and faraway).
+  * Fix a bug that could cause some extra traffic at shutdown.  Thanks
+    to Matthieu Boutier.
+  * Under Linux, set rp_filter explicitly for all interfaces.  This
+    avoids mysterious routing failures on distributions that set
+    rp_filter by default.  Reported by Baptiste Jonglez.
+
+26 May 2013: babeld-1.4.1
+
+  * Fix a bug that would cause the channel list to remain stuck at its
+    initial value when running with -z3.
+
+26 May 2013: babeld-1.3.7
+
+  * Fix a bug that would cause the channel list to remain stuck at its
+    initial value when running with -z3.
+
+3 May 2013: babeld-1.4.0
+
+  * Change the route selection algorithm to used a smoothed metric in
+    addition to the "real" metric.  This reduces the amount of route
+    flapping without any special case hacks.
+  * New flag -r, use a random router-id.  This avoids temporarily
+    unreachable nodes after a reboot when persistent storage is not
+    available.
+  * INCOMPATIBLE CHANGE: the local interface now announces the local
+    hostname, and marks the end of the initial route dump.  (Thanks to
+    Gabriel Kerneis.)
+  * The local interface is now able to accept multiple simultaneous
+    connections.
+  * Detect BATMAN interfaces, don't assume they are wired.
+
+2 May 2013: babeld-1.3.6
+
+  * Work around recent Linux kernels advertising the IPv6 route cache
+    as if it were part of the routing table.  Thanks to Baptiste Jonglez.
+
+12 April 2013: babeld-1.3.5
+
+  * Fix parsing of "channel interfering".  Reported by Gioacchino
+    Mazzurco.
+  * Correctly reset rp_filter to its old value at shutdown.  Thanks to
+    Matthias Schiffer.
+  * Work around a race condition that could cause us to fail to notice
+    an interface's link-local address, and hence mark all neighbours
+    as unreachable.  Reported by Gabriel Kerneis.
+
+8 August 2012: babeld-1.3.4
+
+  * Disable atomic route changes on Linux; this used to cause stuck
+    unreachable routes on non-multipath kernels.
+  * Improve error checking in command-line and configuration parser.
+
+12 July 2012: babeld-1.3.3
+
+  * More fixes to IPv4 support on BSD -- pure meshes are now
+    supported.
+  * Fixed a very rare bug where an unfeasible route could be
+    selected.
+
+30 June 2012: babeld-1.3.2
+
+  * INCOMPATIBLE CHANGE: removed parasitic mode (-P).
+  * Fixes to IPv4 support on BSD.
+  * More reduction to the rate of sending requests.  
+
+11 February 2012: babeld-1.3.1
+
+  * Made the resend logic less aggressive.  This should lead to fewer
+    request messages upon link failure, at the cost of somewhat worse
+    behaviour in the presence of heavy packet loss.
+  * INCOMPATIBLE CHANGE: removed the idle detection functionality (-i).
+    This feature was little used and complicated the code somewhat.
+  * Various internal tweaks to bring babeld closer to the Quagga version.
+
+8 December 2011: babeld-1.3.0
+
+  * Made the route table into a sorted array, and use binary sort for
+    searching for routes.  This makes most route operations O(log n), at
+    a slight cost in memory usage.
+  * Changed the update sending strategy to use buffers large enough for
+    a full update.  This makes the duplicate suppression mechanism
+    effective in large networks, at a small cost in memory usage.
+  * Rate-limit the reaction to wildcard requests.  This avoids an update
+    storm at boot in large networks.
+  * Fixed a bug that prevented usage of the "default" keyword in
+    configuration files.
+
+16 October 2011: babeld-1.2.1
+
+  * Fixed an incorrect assertion that would cause a crash when -w was
+    being used (reported by Thomas McLure).
+
+9 September 2011: babeld 1.2.0
+
+  * Merged the interference-aware branch ("babelz").  Please see the
+    "-z" flag in the manual page.
+  * Fixed a memory leak when expiring resent messages.
+  * Fixed a buffer overflow when parsing MAC addresses (Matthieu Boutier).
+  * Implemented MAC address parsing for BSD (Matthieu Boutier).
+
+27 August 2011: babeld 1.1.4
+
+  * Change the default port number to 6696, as allocated by IANA.
+
+3 August 2011: babeld 1.1.3
+
+  * Implemented an option -u to keep unfeasible routes; this is useful
+    for giving more data to front-end interfaces.
+  * Fixed a number of minor bugs in the front-end interface.
+  * Fixed incorrect handling of interfaces with multiple link-local
+    addresses (thanks to Matthieu Boutier).
+
+27 July 2011: babeld 1.1.2:
+
+  * Changed the strategy used to tweak an installed route in a way that
+    should avoid packet loss (thanks to Dave Taht).
+  * Fixed the handling of duplicate interface definitions in the config
+    file (thanks to Matthieu Boutier).
+
+16 May 2011: babeld 1.1.1:
+
+  * Fixed two bugs in the message parser that could cause IPv4 updates to
+    get lost.
+  * Fixed a bug in the monitoring interface that could cause route ids
+    to change (thanks to Gabriel Kerneis).
+  * INCOMPATIBLE CHANGE: the default wired hello interval is now 4 seconds.
+  * Ported to Bionic libc.
+
+30 January 2011: babeld 1.1.0:
+
+  * INCOMPATIBLE CHANGE: the UDP port number and multicast group have
+    been changed to be the ones allocated by IANA.
+  * Initial port to OpenBSD, by Vincent Gross.
+
+1 October 2010: babeld 1.0.2:
+
+  * Worked around a gcc bug that would cause assertion failures on MIPS.
+
+2 May 2010: babeld 1.0.1:
+
+  * Fixed a bug that could cause input filters to be ignored.
+
+22 April 2010: babeld 1.0:
+
+  * Minor portability fixes.
+
+8 February 2010: babeld 0.98:
+
+  * Implement the ability to prefer Babel routes to external routes
+    according to the kernel priority (-A).
+  * Implement the ability to redistribute "boot" routes when the protocol
+    is explicitly specified on the "redistribute" line.
+  * Allow trailing whitespace in config file.
+
+5 November 2009: babeld 0.97:
+
+  * INCOMPATIBLE CHANGE: rename babel.{conf,log} to babeld.*.
+  * Use getopt for parsing command-line options.
+
+11 August 2009: babeld 0.96
+
+  * Renamed babel to babeld.
+  * Routes are now automatically flushed when an interface goes down or an
+    IPv4 address changes, which avoids desynchronisation between Babel and
+    the kernel.
+
+21 April 2009: babel 0.95
+
+  * Fixed a bug that broke link-quality estimation, and could cause
+    severe instability when we had both good and marginal neighbours.
+  * We now send retractions after a redistributed route is retracted.
+  * Fixed a bug that could cause reliable messages (retractions and
+    router-id switches) to only be sent twice.
+  * We no longer obey a silent time at startup, instead sending a bunch of
+    retractions.  The silent time is inconvenient, but seldom useful.
+  * Updates for routes to self are now sent together with other updates
+    (they used to be sent more frequently).
+  * Fixes the configuration parser to interpret hello-interval as a number
+    of seconds, as specified in the documentation (it used to be interpreted
+    as a number of milliseconds).
+  * INCOMPATIBLE CHANGE: the update interval is now a per-interface value,
+    may be configured manually in the configuraton file, and defaults to
+    4 times the hello interval.  The -u flag is gone.
+
+10 April 2009: babel 0.94
+
+  * Fixed a bug introduced in 0.17 that caused recently retracted routes to
+    remain until the routing table entry was flushed.
+  * Implemented per-interface configuration of parameters such as link
+    cost, hello interval etc.  The command-line flags are now only used to
+    set defaults.
+
+15 March 2009: babel 0.93
+
+  * No longer update seqno periodically, rely on explicit seqno requests.
+
+21 January 2009: babel 0.92
+
+  * Fixed a bug that could cause a crash if an interface was repeatedly
+    brought down and then back up.
+  * Implemented some protection against time stepping when POSIX clocks are
+    not available.
+
+10 November 2008: babel 0.91
+
+  * Maintain buffered updates per-interface, which makes multi-interface
+    nodes significantly less noisy.
+  * Changed the strategy for dealing with unfeasible routes to be slightly
+    more generous while still avoiding loops.
+  * Fixed a bug that would cause multi-hop requests to be spuriously resent.
+  * Made a number of micro-optimisations throughout.
+
+23 October 2008: babel 0.90
+
+  * INCOMPATIBLE CHANGE: all new Babel version 2 protocol, which is both
+    more robust and less chatty than version 1.
+  * Tweaked the strategies for sending triggered updates and unfeasible
+    requests to be more conservative.
+  * Minor optimisations all over the place.
+  * Removed the protocol specification -- the version 2 spec is maintained
+    separately.
+
+18 October 2008: babel 0.17
+
+  * INCOMPATIBLE CHANGE: removed support for ``inherit'' in redistribution.
+  * INCOMPATIBLE CHANGE: a pidfile is now created by default.
+  * Increased the default seqno interval.
+  * Use a fixed kernel priority for routes installed by babel.
+
+29 September 2008: babel 0.16
+
+  * Tweaked cost computation to be slightly slower.
+  * Implemented a local interface for GUIs.
+  * INCOMPATIBLE CHANGE: the -X command-line option is no more.
+
+8 July 2008: babel 0.15
+
+  * Fixed a bug that could break link-quality estimation on yo-yo links.
+  * Protect against duplicate neighbour ids on the same interface.
+  * More tweaks to improve scaling with the number of kernel routes.
+  * Tweaked the default update interval.
+
+1 July 2008: babel 0.14
+
+  * Use POSIX clocks if available to protect against clock stepping.
+  * Made babel use available internal routes straight away when the
+    set of redistributed routes changes.
+  * Lifted the arbitrary limit on the number of kernel routes.
+  * Changed the routing metric used on wireless links to plain ETX.
+  * Bridges are now automatically detected and treated as potential
+    wireless interfaces.
+  * Reduced the default hello interval.
+
+24 May 2008: babel 0.13
+
+  * Removed all arbitrary limits (interfaces, neighbours, routes,
+    xroutes and sources).
+  * Fixed a bug that prevented expiration of stale sources.
+  * Updated the kernel interface to work with recent Linux kernels.
+  * More tweaks to the order in which updates are sent.
+
+7 April 2008: babel 0.12
+
+  * Retractions are now sent multiple times, which should speed up
+    convergence in presence of packet loss.
+  * Optimised the sending of updates to make them smaller.
+  * Don't forward requests multiple times; this should reduce the
+    noise due to requests with no increase in convergence time.
+  * Fixed a bug that could cause a crash when resending requests.
+  * Added some protection against clock stepping.
+
+29 March 2008: babel 0.11
+
+  * Implemented sub-second hello and update intervals.
+  * Fixed a bug that could prevent the best route from being selected
+    for extended periods of time.
+  * Implemented protection against out-of-date requests being sent and
+    forwarded when a node loses its sequence number.
+  * INCOMPATIBLE CHANGE: reduced the cost of wired networks down to 96
+    from 128.
+  * Tweaked the frequency at which a router's seqno increases, to make
+    it more likely that a feasible route will be available when needed.
+  * Implemented garbage collection of old sources.
+  * Implemented coalescing of unicast messages.
+  * Fixed a bug that could cause a crash when a link's MTU changes.
+  * Fixed a bug that could delay noticing that a network is no longer
+    idle when running Babel with the -i flag.
+  * Fixed a bug that could cause incorrect metrics to be advertised
+    when output filtering was used.
+  * Fixed a bug that could cause incorrect link costs to be computed when
+    a neighbour reduces its hello interval.
+  * Fixed some minor issues with the ordering of outgoing messages.
+
+11 March 2008: babel 0.10
+
+  * Implemented the ability to automatically export local addresses (see
+    the ``local'' keyword in redistribute specifications).  This should
+    avoid the need to explicitly specify -X on the command line
+    (Julien Cristau and Juliusz Chroboczek).
+  * INCOMPATIBLE CHANGE: local routes (local interface addresses) are
+    now exported by default.  Specify ``redistribute local deny'' to
+    avoid that.
+  * Babel will now automatically choose a router id if none is
+    specified on the command line.
+  * Automatically adapt to interfaces appearing or disappearing at runtime,
+    as is usually the case when running over tunnels or VPNs.
+  * Changed the link quality computation algorithm to not discard very
+    lossy links.
+  * Multi-hop requests will now be forwarded to an unfeasible successor
+    under some circumstances.
+  * Send multi-hop requests more aggressively.
+  * Send requests for a new seqno upon receiving an unfeasible update
+    if it's better than what we have.
+  * No longer consider the age of routes in route selection.
+  * Added ability to run as a daemon.
+
+14 February 2008: babel 0.9
+
+  * Implemented a proper configuration language to specify input and
+    output filters and redistribution policies.
+  * INCOMPATIBLE CHANGE: the flags -4, -x and -c are no longer supported.
+
+8 February 2008: babel 0.8
+
+  * Babel will now automatically check for interfaces' up/down status,
+    IPv4 address, and optionally for carrier sense.
+  * Implemented the -w option, which disables all optimisations for
+    wired interfaces.
+  * Implemented support for non-default routing tables.
+  * Fixed a bug that could spuriously remove IPv4 routes (thanks to
+    Julien Cristau).
+
+3 January 2008: babel 0.7
+
+  * Implemented support for IPv4.
+  * Fixed sending of unicast requests.
+  * Don't send poison when receiving a request for an unknown route.
+  * Basic filtering infrastructure.
+  * Removed support for broadcast IHU.
+  * Changed the behaviour of -d.
+
+16 October 2007: babel 0.6
+
+  * Implemented resending of unsatisfied requests, with exponential backoff.
+  * Fixed a potential crash in the request handling code.
+  * Send IHUs more aggressively.
+
+9 October 2007: babel 0.5
+
+  * Implemented forwarding of requests and replies.
+  * Fixed a bug that prevented requests from being parsed correctly.
+  * Fixed a bug that prevented IHU intervals from being sent.
+  * Respect reboot_time even after an id change.
+  * Deal with neighbours rebooting and losing their hello seqno when
+    computing link quality.
+
+23 September 2007: babel 0.4
+
+  * Fixed incorrect expiration of old sources.  This could prevent
+    convergence in some cases.
+
+16 September 2007: babel 0.3
+
+  * Fixes to Mac OS X support (Grégoire Henry).
+
+29 August 2007: babel 0.2
+
+  * Made jitter computation depend on how urgent a given message is.
+    This dramatically improves convergence speed, without increasing
+    network load.
+  * Fixed a bug that prevented neighbour associations from being
+    discarded at shutdown.
+
+22 August 2007: babel 0.1
+
+  * Initial public release.

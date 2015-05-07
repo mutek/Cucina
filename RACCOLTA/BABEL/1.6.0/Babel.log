@@ -1,0 +1,170 @@
+
+env
+
+LESSOPEN=| /usr/bin/lesspipe %s
+MAIL=/var/mail/root
+USER=root
+SHLVL=4
+OLDPWD=/root/Cucina
+HOME=/root
+XDG_SESSION_COOKIE=52a3d9dc63bf7cc0c7f195890000002a-1428739034.583991-1673892678
+LOGNAME=root
+WINDOWID=18874381
+_=./prepara.ricetta
+XTERM_SHELL=/bin/bash
+TERM=xterm
+WINDOWPATH=2
+PATH=/root:/root:/home/LaunchPad:/root/ANDRMD:/root:/home/LaunchPad:/root/ANDRMD:/home/LaunchPad:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+DISPLAY=:0
+LANG=it_IT.UTF-8
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:
+XAUTHORITY=/root/.Xauthority
+PREFIX=/opt/Babel/1.6.0/Debian7/Linux/ia32
+SHELL=/bin/bash
+LESSCLOSE=/usr/bin/lesspipe %s %s
+PWD=/root/Cucina/RACCOLTA/BABEL/1.6.0
+LC_ALL=C
+XTERM_LOCALE=it_IT.UTF-8
+XTERM_VERSION=XTerm(278)
+
+alias 
+
+
+tar -xvf babeld-1.6.0.tar.gz
+
+babeld-1.6.0/
+babeld-1.6.0/CHANGES
+babeld-1.6.0/LICENCE
+babeld-1.6.0/Makefile
+babeld-1.6.0/README
+babeld-1.6.0/babeld.c
+babeld-1.6.0/babeld.h
+babeld-1.6.0/babeld.man
+babeld-1.6.0/configuration.c
+babeld-1.6.0/configuration.h
+babeld-1.6.0/disambiguation.c
+babeld-1.6.0/disambiguation.h
+babeld-1.6.0/interface.c
+babeld-1.6.0/interface.h
+babeld-1.6.0/kernel.c
+babeld-1.6.0/kernel.h
+babeld-1.6.0/kernel_netlink.c
+babeld-1.6.0/kernel_socket.c
+babeld-1.6.0/local.c
+babeld-1.6.0/local.h
+babeld-1.6.0/message.c
+babeld-1.6.0/message.h
+babeld-1.6.0/neighbour.c
+babeld-1.6.0/neighbour.h
+babeld-1.6.0/net.c
+babeld-1.6.0/net.h
+babeld-1.6.0/resend.c
+babeld-1.6.0/resend.h
+babeld-1.6.0/route.c
+babeld-1.6.0/route.h
+babeld-1.6.0/source.c
+babeld-1.6.0/source.h
+babeld-1.6.0/util.c
+babeld-1.6.0/util.h
+babeld-1.6.0/xroute.c
+babeld-1.6.0/xroute.h
+
+configure --prefix=/opt/Babel/1.6.0/Debian7/Linux/ia32 
+
+
+babeld.pre-cook
+
+
+echo "PREFIX = "$PREFIX > /tmp/$APP_NAME.prefix
+
+echo "pre.cook: PREFIX="$PREFIX
+
+echo "" >> /tmp/$APP_NAME.prefix
+wait
+
+chmod 600 /tmp/$APP_NAME.prefix
+wait
+
+cat Makefile > /tmp/$APP_NAME.Makefile
+wait
+
+chmod 600 /tmp/$APP_NAME.Makefile
+wait
+
+sed -i '/PREFIX = /d' /tmp/$APP_NAME.Makefile
+wait
+
+cat /tmp/$APP_NAME.prefix /tmp/$APP_NAME.Makefile > /tmp/$APP_NAME.makefile
+wait
+
+chmod 600 /tmp/$APP_NAME.makefile
+wait
+
+mv Makefile Makefile.backup.$(date +%s)
+wait
+
+cp /tmp/$APP_NAME.makefile ./Makefile
+wait
+
+#nano Makefile
+
+unlink /tmp/$APP_NAME.prefix
+unlink /tmp/$APP_NAME.Makefile
+unlink /tmp/$APP_NAME.makefile
+
+make
+
+cc -Os -g -Wall     -c -o babeld.o babeld.c
+cc -Os -g -Wall     -c -o net.o net.c
+cc -Os -g -Wall     -c -o kernel.o kernel.c
+cc -Os -g -Wall     -c -o util.o util.c
+cc -Os -g -Wall     -c -o interface.o interface.c
+cc -Os -g -Wall     -c -o source.o source.c
+cc -Os -g -Wall     -c -o neighbour.o neighbour.c
+cc -Os -g -Wall     -c -o route.o route.c
+cc -Os -g -Wall     -c -o xroute.o xroute.c
+cc -Os -g -Wall     -c -o message.o message.c
+cc -Os -g -Wall     -c -o resend.o resend.c
+cc -Os -g -Wall     -c -o configuration.o configuration.c
+cc -Os -g -Wall     -c -o local.o local.c
+cc -Os -g -Wall     -c -o disambiguation.o disambiguation.c
+cc -Os -g -Wall    -o babeld babeld.o net.o kernel.o util.o interface.o source.o neighbour.o route.o xroute.o message.o resend.o configuration.o local.o disambiguation.o -lrt
+
+babeld.post-make
+
+
+make install
+
+make: `babeld' is up to date.
+rm -f /opt/Babel/1.6.0/Debian7/Linux/ia32/bin/babeld
+mkdir -p /opt/Babel/1.6.0/Debian7/Linux/ia32/bin
+cp -f babeld /opt/Babel/1.6.0/Debian7/Linux/ia32/bin
+mkdir -p /opt/Babel/1.6.0/Debian7/Linux/ia32/share/man/man8
+cp -f babeld.man /opt/Babel/1.6.0/Debian7/Linux/ia32/share/man/man8/babeld.8
+
+hash in Babel.sha512sum
+
+218a598fb8f00ea644c04732faa8906ccea7d4e707e93786194a31e52c762a1d5ec006dd85ffc3a2f82e0958f9352268703482754527b2eff4d4d823ba545097  opt/Babel/1.6.0/Debian7/Linux/ia32/bin/babeld
+788b918d083262cab2d17b21b3d38a02a246087de64ed93d97ad6e9f758ce48ec52958d975d387afcbfc17e2af7d8a8412b59da46afa66579286fb8394510355  opt/Babel/1.6.0/Debian7/Linux/ia32/share/man/man8/babeld.8
+
+hash in Babel.sha512sum.sha512sum
+
+68233efa660cb1b40c27c04925620e0cfa614a48d9c4c11df5e99a5783ed5590980d3a721c1ac03512009c5356ef34e50f775348b8dc35796fec77acb9055c56  Babel.sha512sum
+
+hash in babeld-1.6.0.tar.gz.sha512sum
+
+1faec4a468764abdf338328018787e387a4c2e8bc83f8229d541ed64a2bda52486ac4db09101ca8de8ae4882d27f65ca47db4c6a3d117b48d03c192be4e293c9  babeld-1.6.0.tar.gz
+
+total 132
+drwxr-xr-x 3 root root  4096 Apr 14 13:01 .
+drwxr-xr-x 5 root root  4096 Apr 14 12:58 ..
+-rw-r--r-- 1 root root  5510 Apr 14 13:01 Babel.log
+-rw-r--r-- 1 root root   365 Apr 14 13:01 Babel.sha512sum
+-rw-r--r-- 1 root root   146 Apr 14 13:01 Babel.sha512sum.sha512sum
+-rw-r--r-- 1 root root 85644 Apr 14 12:58 babeld-1.6.0.tar.gz
+-rw-r--r-- 1 root root   150 Apr 14 13:01 babeld-1.6.0.tar.gz.sha512sum
+-rwxr-xr-x 1 root root   307 Apr 14 12:57 babeld.ingredienti
+-rw-r--r-- 1 root root   616 Apr 14 12:59 babeld.pre-cook
+drwxr-xr-x 3 root root  4096 Apr 14 13:01 opt
+-rwxr-xr-x 3 root root  5871 Apr 11 22:17 prepara.ricetta
+
