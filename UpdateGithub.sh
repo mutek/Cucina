@@ -3,7 +3,7 @@
 # UpdateGithub.sh
 #
 #
-# Copyleft )C( 2013-2014 Luca Cappelletti <luca.cappelletti@gmail.com>
+# Copyleft )C( 2013-2015 Luca Cappelletti <luca.cappelletti@gmail.com>
 #
 # DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
 # Version 2, December 2004
@@ -24,16 +24,21 @@
 git config --global user.name "mutek"
 git config --global user.email mutek@inventati.org
 
+commento=$1
+[ -z $1 ] || commento=""
+
 echo "Aggiungo i cambiamenti al database locale"
-git add .
+git add -A .
 #echo "Inserisci una descrizione dei tuoi cambiamenti"
 #read n
 echo "Eseguo la finalizzazione dei cambiamenti in locale"
 EPOCA_UNIX=$(date +%N)
-echo "Commento transazione: "$EPOCA_UNIX
-git commit -a -m "$EPOCA_UNIX"
+COMMENTO="["$EPOCA_UNIX"] "$commento
+echo "Commento transazione: "$COMMENTO
+git commit -a -m "$COMMENTO"
 
 echo "Invio i cambiamenti locali al deposito remoto..."
 git push origin master
 #git push origin gh-pages
 echo "ok"
+
