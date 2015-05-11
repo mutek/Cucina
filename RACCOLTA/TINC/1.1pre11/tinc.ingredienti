@@ -1,0 +1,17 @@
+# TINC VPN
+RELEASE=1.1pre11
+PROGRAM_NAME=tinc
+ARCHIVE_TYPE="tar.gz"
+APP_NAME=Tinc
+DISTRO=Debian7
+KERNEL=Linux
+ARCH=amd64
+PREFIX_ROOT=/opt
+SOURCE_URL="http://www.tinc-vpn.org/packages/tinc-1.1pre11.tar.gz"
+STRIP_ALL=true
+CONFIGURE_OPTIONS=" --enable-jumbograms --enable-tunemu --enable-vde --enable-uml"
+MD5SUM=""
+SHA1SUM=""
+SHA256SUM=""
+SHA512SUM=""
+APTGET_BUILDDEP=true

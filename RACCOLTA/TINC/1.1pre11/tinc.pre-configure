@@ -1,0 +1,3 @@
+# Trequired
+apt-get install libvdeplug-dev
+apt-get install liblzo2-dev
