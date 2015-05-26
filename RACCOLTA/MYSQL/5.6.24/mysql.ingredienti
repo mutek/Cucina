@@ -1,0 +1,17 @@
+# MYSQL
+RELEASE=5.6.24
+PROGRAM_NAME=mysql
+ARCHIVE_TYPE="tar.gz"
+APP_NAME=Mysql
+DISTRO=Debian7
+KERNEL=Linux
+ARCH=amd64
+PREFIX_ROOT=/opt
+SOURCE_URL="http://dev.mysql.com/get/Downloads/MySQL-5.6/mysql-5.6.24.tar.gz"
+STRIP_ALL=true
+CONFIGURE_OPTIONS=""
+MD5SUM=""
+SHA1SUM=""
+SHA256SUM=""
+SHA512SUM=""
+APTGET_BUILDDEP=""

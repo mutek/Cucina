@@ -1,0 +1,26 @@
+export LC_ALL=C
+# usiamo cmake quindi assicuriamoci di lavorare nell'ambiente richiesto
+
+[ $(which cmake) ] || { echo "cmake non presente è necessario installarlo"; apt-get install cmake; }
+
+# lavoriamo in una build directory di comodo come consono a cmake
+
+#BUILD_DIR="d1r3ct0r1"
+#rm -rf --preserve-root $BUILD_DIR
+#wait
+#
+#mkdir $BUILD_DIR
+#wait
+#
+#entriamo e costruiamo l'ambiente
+#
+#cd $BUILD_DIR
+#wait
+
+cmake -DCMAKE_INSTALL_PREFIX:PATH=$PREFIX ./
+wait
+
+# a questo punto possiamo rilasciare lo script e continuare in quanto i prossimi passi prevedono il make e make install
+
+sleep 1
+
