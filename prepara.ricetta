@@ -111,7 +111,7 @@ do
        [ -f ./$PROGRAM_NAME.pre-configure ] && . ./$PROGRAM_NAME.pre-configure
 
 
-	echo "configure --prefix="$PREFIX" "$CONFIGURE_OPTIONS
+	echo "configure --prefix="$PREFIX" "${CONFIGURE_OPTIONS}
 
 	echo "" >> $APP_NAME.log
 	echo "configure --prefix="$PREFIX" "$CONFIGURE_OPTIONS >> $APP_NAME.log
