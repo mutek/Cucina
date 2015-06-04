@@ -1,0 +1,16 @@
+# STUNNEL
+RELEASE=5.17
+PROGRAM_NAME=stunnel
+ARCHIVE_TYPE="tar.gz"
+APP_NAME=Stunnel
+DISTRO=Debian7
+KERNEL=Linux
+ARCH=amd64
+PREFIX_ROOT=/opt
+SOURCE_URL="https://www.stunnel.org/downloads/stunnel-5.17.tar.gz"
+STRIP_ALL=true
+CONFIGURE_OPTIONS=""
+MD5SUM=""
+SHA1SUM=""
+SHA256SUM=""
+SHA512SUM=""

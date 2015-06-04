@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 # 
-# prepara.ricetta 1.5
+# prepara.ricetta v1.6
 #
 # 2014-2015 mutek <mutek _A_T_ riseup _D_O_T_ net>
 # WTF
@@ -104,9 +104,9 @@ do
 
 	# post tar - pre configure	
 
-        echo "" >> ../$APP_NAME.log
-        echo "$PROGRAM_NAME.pre-configure" >> ../$APP_NAME.log
-        echo "" >> ../$APP_NAME.log
+        echo "" >> $APP_NAME.log
+        echo "$PROGRAM_NAME.pre-configure" >> $APP_NAME.log
+        echo "" >> $APP_NAME.log
 
        [ -f ./$PROGRAM_NAME.pre-configure ] && . ./$PROGRAM_NAME.pre-configure
 

@@ -1,0 +1,618 @@
+
+env
+
+MAIL=/var/mail/root
+SSH_CLIENT=10.10.10.1 59373 22
+USER=root
+SHLVL=1
+HOME=/root
+OLDPWD=/root
+SSH_TTY=/dev/pts/4
+LOGNAME=root
+_=./prepara.ricetta
+TERM=xterm
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+LANG=en_US.UTF-8
+LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.dz=01;31:*.gz=01;31:*.lz=01;31:*.xz=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.axv=01;35:*.anx=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.axa=00;36:*.oga=00;36:*.spx=00;36:*.xspf=00;36:
+PREFIX=/opt/Stunnel/5.17/Debian7/Linux/amd64
+SHELL=/bin/bash
+PWD=/root/STUNNEL/5.17
+LC_ALL=C
+SSH_CONNECTION=10.10.10.1 59373 10.10.10.83 22
+
+alias 
+
+
+tar -xvf stunnel-5.17.tar.gz
+
+stunnel-5.17/
+stunnel-5.17/configure.ac
+stunnel-5.17/Makefile.am
+stunnel-5.17/aclocal.m4
+stunnel-5.17/README
+stunnel-5.17/src/
+stunnel-5.17/src/ui_unix.c
+stunnel-5.17/src/env.c
+stunnel-5.17/src/vc.mak
+stunnel-5.17/src/evc.mak
+stunnel-5.17/src/protocol.c
+stunnel-5.17/src/make.bat
+stunnel-5.17/src/Makefile.am
+stunnel-5.17/src/libwrap.c
+stunnel-5.17/src/resources.rc
+stunnel-5.17/src/stunnel3.in
+stunnel-5.17/src/ui_win_gui.c
+stunnel-5.17/src/options.c
+stunnel-5.17/src/resolver.c
+stunnel-5.17/src/version.h
+stunnel-5.17/src/active.ico
+stunnel-5.17/src/pty.c
+stunnel-5.17/src/fd.c
+stunnel-5.17/src/log.c
+stunnel-5.17/src/ctx.c
+stunnel-5.17/src/verify.c
+stunnel-5.17/src/resources.h
+stunnel-5.17/src/makece.bat
+stunnel-5.17/src/mingw.mak
+stunnel-5.17/src/tls.c
+stunnel-5.17/src/network.c
+stunnel-5.17/src/str.c
+stunnel-5.17/src/common.h
+stunnel-5.17/src/sthreads.c
+stunnel-5.17/src/idle.ico
+stunnel-5.17/src/prototypes.h
+stunnel-5.17/src/error.ico
+stunnel-5.17/src/ui_win_cli.c
+stunnel-5.17/src/os2.mak
+stunnel-5.17/src/config.h.in
+stunnel-5.17/src/makew32.bat
+stunnel-5.17/src/stunnel.c
+stunnel-5.17/src/file.c
+stunnel-5.17/src/stunnel.ico
+stunnel-5.17/src/client.c
+stunnel-5.17/src/Makefile.in
+stunnel-5.17/src/ssl.c
+stunnel-5.17/ChangeLog
+stunnel-5.17/COPYING
+stunnel-5.17/CREDITS
+stunnel-5.17/INSTALL.FIPS
+stunnel-5.17/doc/
+stunnel-5.17/doc/en/
+stunnel-5.17/doc/en/VNC_StunnelHOWTO.html
+stunnel-5.17/doc/Makefile.am
+stunnel-5.17/doc/stunnel.8
+stunnel-5.17/doc/stunnel.pod
+stunnel-5.17/doc/stunnel.html
+stunnel-5.17/doc/stunnel.pl.html
+stunnel-5.17/doc/pl/
+stunnel-5.17/doc/pl/tworzenie_certyfikatow.html
+stunnel-5.17/doc/pl/faq.stunnel-2.html
+stunnel-5.17/doc/stunnel.pl.pod
+stunnel-5.17/doc/stunnel.pl.8
+stunnel-5.17/doc/Makefile.in
+stunnel-5.17/COPYRIGHT.GPL
+stunnel-5.17/AUTHORS
+stunnel-5.17/configure
+stunnel-5.17/TODO
+stunnel-5.17/INSTALL.WCE
+stunnel-5.17/NEWS
+stunnel-5.17/auto/
+stunnel-5.17/auto/install-sh
+stunnel-5.17/auto/compile
+stunnel-5.17/auto/missing
+stunnel-5.17/auto/ltmain.sh
+stunnel-5.17/auto/depcomp
+stunnel-5.17/auto/config.sub
+stunnel-5.17/auto/config.guess
+stunnel-5.17/tools/
+stunnel-5.17/tools/importCA.sh
+stunnel-5.17/tools/Makefile.am
+stunnel-5.17/tools/ca.html
+stunnel-5.17/tools/script.sh
+stunnel-5.17/tools/stunnel.spec
+stunnel-5.17/tools/stunnel.service.in
+stunnel-5.17/tools/stunnel.init.in
+stunnel-5.17/tools/stunnel.license
+stunnel-5.17/tools/stunnel.cnf
+stunnel-5.17/tools/stunnel.conf-sample.in
+stunnel-5.17/tools/ca.pl
+stunnel-5.17/tools/stunnel.conf
+stunnel-5.17/tools/stunnel.nsi
+stunnel-5.17/tools/importCA.html
+stunnel-5.17/tools/Makefile.in
+stunnel-5.17/INSTALL.W32
+stunnel-5.17/INSTALL
+stunnel-5.17/build-android.sh
+stunnel-5.17/BUGS
+stunnel-5.17/Makefile.in
+stunnel-5.17/PORTS
+stunnel-5.17/m4/
+stunnel-5.17/m4/ax_check_link_flag.m4
+stunnel-5.17/m4/ax_append_flag.m4
+stunnel-5.17/m4/ltsugar.m4
+stunnel-5.17/m4/ax_append_link_flags.m4
+stunnel-5.17/m4/ltversion.m4
+stunnel-5.17/m4/ax_require_defined.m4
+stunnel-5.17/m4/ax_append_compile_flags.m4
+stunnel-5.17/m4/ax_pthread.m4
+stunnel-5.17/m4/ltoptions.m4
+stunnel-5.17/m4/libtool.m4
+stunnel-5.17/m4/lt~obsolete.m4
+stunnel-5.17/m4/ax_check_compile_flag.m4
+
+configure --prefix=/opt/Stunnel/5.17/Debian7/Linux/amd64 
+
+configure: **************************************** initialization
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a thread-safe mkdir -p... /bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking build system type... x86_64-unknown-linux-gnu
+checking host system type... x86_64-unknown-linux-gnu
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether we are using the GNU C compiler... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to accept ISO C89... none needed
+checking whether gcc understands -c and -o together... yes
+checking for style of include used by make... GNU
+checking dependency style of gcc... gcc3
+checking whether make sets $(MAKE)... (cached) yes
+configure: **************************************** thread model
+checking if compiler needs -Werror to reject unknown flags... no
+checking for the pthreads library -lpthreads... no
+checking whether pthreads work without any flags... no
+checking whether pthreads work with -Kthread... no
+checking whether pthreads work with -kthread... no
+checking for the pthreads library -llthread... no
+checking whether pthreads work with -pthread... yes
+checking for joinable pthread attribute... PTHREAD_CREATE_JOINABLE
+checking if more special flags are required for pthreads... no
+checking for PTHREAD_PRIO_INHERIT... yes
+configure: PTHREAD thread model detected
+configure: **************************************** compiler/linker flags
+checking whether C compiler accepts -Wall... yes
+checking whether C compiler accepts -Wextra... yes
+checking whether C compiler accepts -Wpedantic... no
+checking whether C compiler accepts -Wformat=2... yes
+checking whether C compiler accepts -Wconversion... yes
+checking whether C compiler accepts -Wno-long-long... yes
+checking whether C compiler accepts -Wno-deprecated-declarations... yes
+checking whether C compiler accepts -fstack-protector... yes
+checking whether C compiler accepts -fPIE... yes
+checking whether C compiler accepts -D_FORTIFY_SOURCE=2... yes
+checking whether the linker accepts -fPIE... yes
+checking whether the linker accepts -pie... yes
+checking whether the linker accepts -Wl,-z,relro... yes
+checking whether the linker accepts -Wl,-z,now... yes
+checking whether the linker accepts -Wl,-z,noexecstack... yes
+configure: **************************************** libtool
+checking how to print strings... printf
+checking for a sed that does not truncate output... /bin/sed
+checking for grep that handles long lines and -e... /bin/grep
+checking for egrep... /bin/grep -E
+checking for fgrep... /bin/grep -F
+checking for ld used by gcc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking whether the shell understands some XSI constructs... yes
+checking whether the shell understands "+="... yes
+checking how to convert x86_64-unknown-linux-gnu file names to x86_64-unknown-linux-gnu format... func_convert_file_noop
+checking how to convert x86_64-unknown-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for ar... ar
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for sysroot... no
+checking for mt... mt
+checking if mt is a manifest tool... no
+checking how to run the C preprocessor... gcc -E
+checking for ANSI C header files... yes
+checking for sys/types.h... yes
+checking for sys/stat.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for memory.h... yes
+checking for strings.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... no
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/bin/ld -m elf_x86_64) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... no
+configure: **************************************** types
+checking for int8_t... yes
+checking for int16_t... yes
+checking for int32_t... yes
+checking for int64_t... yes
+checking for uint8_t... yes
+checking for uint16_t... yes
+checking for uint32_t... yes
+checking for uint64_t... yes
+checking for size_t... yes
+checking for ssize_t... yes
+checking for uid_t in sys/types.h... yes
+checking for socklen_t... yes
+checking for struct sockaddr_un... yes
+checking for struct addrinfo... yes
+configure: **************************************** PTY device files
+checking for "/dev/ptmx"... yes
+checking for "/dev/ptc"... no
+configure: **************************************** entropy sources
+checking for "/dev/urandom"... yes
+configure: **************************************** default group
+checking for default group... nogroup
+configure: **************************************** header files
+checking for stdint.h... (cached) yes
+checking for inttypes.h... (cached) yes
+checking malloc.h usability... yes
+checking malloc.h presence... yes
+checking for malloc.h... yes
+checking ucontext.h usability... yes
+checking ucontext.h presence... yes
+checking for ucontext.h... yes
+checking pthread.h usability... yes
+checking pthread.h presence... yes
+checking for pthread.h... yes
+checking poll.h usability... yes
+checking poll.h presence... yes
+checking for poll.h... yes
+checking tcpd.h usability... yes
+checking tcpd.h presence... yes
+checking for tcpd.h... yes
+checking stropts.h usability... yes
+checking stropts.h presence... yes
+checking for stropts.h... yes
+checking grp.h usability... yes
+checking grp.h presence... yes
+checking for grp.h... yes
+checking for unistd.h... (cached) yes
+checking util.h usability... no
+checking util.h presence... no
+checking for util.h... no
+checking libutil.h usability... no
+checking libutil.h presence... no
+checking for libutil.h... no
+checking pty.h usability... yes
+checking pty.h presence... yes
+checking for pty.h... yes
+checking for sys/types.h... (cached) yes
+checking sys/select.h usability... yes
+checking sys/select.h presence... yes
+checking for sys/select.h... yes
+checking sys/poll.h usability... yes
+checking sys/poll.h presence... yes
+checking for sys/poll.h... yes
+checking sys/socket.h usability... yes
+checking sys/socket.h presence... yes
+checking for sys/socket.h... yes
+checking sys/un.h usability... yes
+checking sys/un.h presence... yes
+checking for sys/un.h... yes
+checking sys/ioctl.h usability... yes
+checking sys/ioctl.h presence... yes
+checking for sys/ioctl.h... yes
+checking sys/filio.h usability... no
+checking sys/filio.h presence... no
+checking for sys/filio.h... no
+checking sys/resource.h usability... yes
+checking sys/resource.h presence... yes
+checking for sys/resource.h... yes
+checking sys/uio.h usability... yes
+checking sys/uio.h presence... yes
+checking for sys/uio.h... yes
+checking sys/syscall.h usability... yes
+checking sys/syscall.h presence... yes
+checking for sys/syscall.h... yes
+checking for struct msghdr.msg_control... yes
+checking for linux/netfilter_ipv4.h... yes
+configure: **************************************** libraries
+checking for library containing gethostbyname... none required
+checking for library containing yp_get_default_domain... -lnsl
+checking for library containing socket... none required
+checking for library containing openpty... -lutil
+checking for library containing dlopen... -ldl
+checking for library containing shl_load... no
+checking for library containing inflateEnd... -lz
+configure: **************************************** library functions
+checking for snprintf... yes
+checking for vsnprintf... yes
+checking for openpty... yes
+checking for _getpty... no
+checking for daemon... yes
+checking for waitpid... yes
+checking for wait4... yes
+checking for setsid... yes
+checking for setgroups... yes
+checking for chroot... yes
+checking for sysconf... yes
+checking for getrlimit... yes
+checking for pthread_sigmask... yes
+checking for localtime_r... yes
+checking for getcontext... yes
+checking for __makecontext_v2... no
+checking for poll... yes
+checking for gethostbyname2... yes
+checking for endhostent... yes
+checking for getnameinfo... yes
+checking for getaddrinfo... yes
+checking for broken poll() implementation... no
+checking for pipe2... yes
+checking for accept4... yes
+configure: **************************************** optional features
+checking whether to enable IPv6 support... yes (default)
+checking whether to enable FIPS support... autodetecting
+checking whether to enable systemd socket activation support... autodetecting
+checking for library containing sd_listen_fds... no
+configure: systemd library not found
+checking whether to enable TCP wrappers support... autodetecting
+checking for hosts_access in -lwrap... yes
+configure: libwrap support enabled
+configure: **************************************** SSL
+checking for compiler sysroot... /
+checking for SSL directory... /usr
+checking /usr/include/openssl/engine.h usability... yes
+checking /usr/include/openssl/engine.h presence... yes
+checking for /usr/include/openssl/engine.h... yes
+checking /usr/include/openssl/ocsp.h usability... yes
+checking /usr/include/openssl/ocsp.h presence... yes
+checking for /usr/include/openssl/ocsp.h... yes
+checking for FIPS_mode_set... yes
+configure: FIPS support enabled
+configure: **************************************** write the results
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating src/Makefile
+config.status: creating src/stunnel3
+config.status: creating doc/Makefile
+config.status: creating tools/Makefile
+config.status: creating tools/stunnel.conf-sample
+config.status: creating tools/stunnel.init
+config.status: creating tools/stunnel.service
+config.status: creating src/config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+configure: **************************************** success
+
+stunnel.pre-cook
+
+
+make
+
+Making all in src
+make[1]: Entering directory `/root/STUNNEL/5.17/stunnel-5.17/src'
+make  all-am
+make[2]: Entering directory `/root/STUNNEL/5.17/stunnel-5.17/src'
+/bin/bash ../libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H -I.     -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -MT env.lo -MD -MP -MF .deps/env.Tpo -c -o env.lo env.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -I. -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -D_FORTIFY_SOURCE=2 -MT env.lo -MD -MP -MF .deps/env.Tpo -c env.c  -fPIC -DPIC -o .libs/env.o
+mv -f .deps/env.Tpo .deps/env.Plo
+/bin/bash ../libtool  --tag=CC   --mode=link gcc  -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -avoid-version -fPIE -pie -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack -o libstunnel.la -rpath /opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel env.lo  -lz -ldl -lutil -lnsl   -lwrap
+libtool: link: gcc -shared  -fPIC -DPIC  .libs/env.o   -lz -ldl -lutil -lnsl -lwrap  -O2 -pthread -Wl,-z -Wl,relro -Wl,-z -Wl,now -Wl,-z -Wl,noexecstack   -pthread -Wl,-soname -Wl,libstunnel.so -o .libs/libstunnel.so
+libtool: link: ( cd ".libs" && rm -f "libstunnel.la" && ln -s "../libstunnel.la" "libstunnel.la" )
+gcc -DHAVE_CONFIG_H -I.  -I/usr/kerberos/include -I/usr/include -DLIBDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel"' -DCONFDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel"'   -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -MT stunnel-tls.o -MD -MP -MF .deps/stunnel-tls.Tpo -c -o stunnel-tls.o `test -f 'tls.c' || echo './'`tls.c
+mv -f .deps/stunnel-tls.Tpo .deps/stunnel-tls.Po
+gcc -DHAVE_CONFIG_H -I.  -I/usr/kerberos/include -I/usr/include -DLIBDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel"' -DCONFDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel"'   -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -MT stunnel-str.o -MD -MP -MF .deps/stunnel-str.Tpo -c -o stunnel-str.o `test -f 'str.c' || echo './'`str.c
+mv -f .deps/stunnel-str.Tpo .deps/stunnel-str.Po
+gcc -DHAVE_CONFIG_H -I.  -I/usr/kerberos/include -I/usr/include -DLIBDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel"' -DCONFDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel"'   -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -MT stunnel-file.o -MD -MP -MF .deps/stunnel-file.Tpo -c -o stunnel-file.o `test -f 'file.c' || echo './'`file.c
+mv -f .deps/stunnel-file.Tpo .deps/stunnel-file.Po
+gcc -DHAVE_CONFIG_H -I.  -I/usr/kerberos/include -I/usr/include -DLIBDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel"' -DCONFDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel"'   -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -MT stunnel-client.o -MD -MP -MF .deps/stunnel-client.Tpo -c -o stunnel-client.o `test -f 'client.c' || echo './'`client.c
+mv -f .deps/stunnel-client.Tpo .deps/stunnel-client.Po
+gcc -DHAVE_CONFIG_H -I.  -I/usr/kerberos/include -I/usr/include -DLIBDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel"' -DCONFDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel"'   -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -MT stunnel-log.o -MD -MP -MF .deps/stunnel-log.Tpo -c -o stunnel-log.o `test -f 'log.c' || echo './'`log.c
+mv -f .deps/stunnel-log.Tpo .deps/stunnel-log.Po
+gcc -DHAVE_CONFIG_H -I.  -I/usr/kerberos/include -I/usr/include -DLIBDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel"' -DCONFDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel"'   -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -MT stunnel-options.o -MD -MP -MF .deps/stunnel-options.Tpo -c -o stunnel-options.o `test -f 'options.c' || echo './'`options.c
+mv -f .deps/stunnel-options.Tpo .deps/stunnel-options.Po
+gcc -DHAVE_CONFIG_H -I.  -I/usr/kerberos/include -I/usr/include -DLIBDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel"' -DCONFDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel"'   -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -MT stunnel-protocol.o -MD -MP -MF .deps/stunnel-protocol.Tpo -c -o stunnel-protocol.o `test -f 'protocol.c' || echo './'`protocol.c
+mv -f .deps/stunnel-protocol.Tpo .deps/stunnel-protocol.Po
+gcc -DHAVE_CONFIG_H -I.  -I/usr/kerberos/include -I/usr/include -DLIBDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel"' -DCONFDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel"'   -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -MT stunnel-network.o -MD -MP -MF .deps/stunnel-network.Tpo -c -o stunnel-network.o `test -f 'network.c' || echo './'`network.c
+mv -f .deps/stunnel-network.Tpo .deps/stunnel-network.Po
+gcc -DHAVE_CONFIG_H -I.  -I/usr/kerberos/include -I/usr/include -DLIBDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel"' -DCONFDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel"'   -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -MT stunnel-resolver.o -MD -MP -MF .deps/stunnel-resolver.Tpo -c -o stunnel-resolver.o `test -f 'resolver.c' || echo './'`resolver.c
+mv -f .deps/stunnel-resolver.Tpo .deps/stunnel-resolver.Po
+gcc -DHAVE_CONFIG_H -I.  -I/usr/kerberos/include -I/usr/include -DLIBDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel"' -DCONFDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel"'   -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -MT stunnel-ssl.o -MD -MP -MF .deps/stunnel-ssl.Tpo -c -o stunnel-ssl.o `test -f 'ssl.c' || echo './'`ssl.c
+mv -f .deps/stunnel-ssl.Tpo .deps/stunnel-ssl.Po
+gcc -DHAVE_CONFIG_H -I.  -I/usr/kerberos/include -I/usr/include -DLIBDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel"' -DCONFDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel"'   -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -MT stunnel-ctx.o -MD -MP -MF .deps/stunnel-ctx.Tpo -c -o stunnel-ctx.o `test -f 'ctx.c' || echo './'`ctx.c
+mv -f .deps/stunnel-ctx.Tpo .deps/stunnel-ctx.Po
+gcc -DHAVE_CONFIG_H -I.  -I/usr/kerberos/include -I/usr/include -DLIBDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel"' -DCONFDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel"'   -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -MT stunnel-verify.o -MD -MP -MF .deps/stunnel-verify.Tpo -c -o stunnel-verify.o `test -f 'verify.c' || echo './'`verify.c
+mv -f .deps/stunnel-verify.Tpo .deps/stunnel-verify.Po
+gcc -DHAVE_CONFIG_H -I.  -I/usr/kerberos/include -I/usr/include -DLIBDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel"' -DCONFDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel"'   -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -MT stunnel-sthreads.o -MD -MP -MF .deps/stunnel-sthreads.Tpo -c -o stunnel-sthreads.o `test -f 'sthreads.c' || echo './'`sthreads.c
+mv -f .deps/stunnel-sthreads.Tpo .deps/stunnel-sthreads.Po
+gcc -DHAVE_CONFIG_H -I.  -I/usr/kerberos/include -I/usr/include -DLIBDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel"' -DCONFDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel"'   -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -MT stunnel-fd.o -MD -MP -MF .deps/stunnel-fd.Tpo -c -o stunnel-fd.o `test -f 'fd.c' || echo './'`fd.c
+mv -f .deps/stunnel-fd.Tpo .deps/stunnel-fd.Po
+gcc -DHAVE_CONFIG_H -I.  -I/usr/kerberos/include -I/usr/include -DLIBDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel"' -DCONFDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel"'   -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -MT stunnel-stunnel.o -MD -MP -MF .deps/stunnel-stunnel.Tpo -c -o stunnel-stunnel.o `test -f 'stunnel.c' || echo './'`stunnel.c
+mv -f .deps/stunnel-stunnel.Tpo .deps/stunnel-stunnel.Po
+gcc -DHAVE_CONFIG_H -I.  -I/usr/kerberos/include -I/usr/include -DLIBDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel"' -DCONFDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel"'   -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -MT stunnel-pty.o -MD -MP -MF .deps/stunnel-pty.Tpo -c -o stunnel-pty.o `test -f 'pty.c' || echo './'`pty.c
+mv -f .deps/stunnel-pty.Tpo .deps/stunnel-pty.Po
+gcc -DHAVE_CONFIG_H -I.  -I/usr/kerberos/include -I/usr/include -DLIBDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel"' -DCONFDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel"'   -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -MT stunnel-libwrap.o -MD -MP -MF .deps/stunnel-libwrap.Tpo -c -o stunnel-libwrap.o `test -f 'libwrap.c' || echo './'`libwrap.c
+mv -f .deps/stunnel-libwrap.Tpo .deps/stunnel-libwrap.Po
+gcc -DHAVE_CONFIG_H -I.  -I/usr/kerberos/include -I/usr/include -DLIBDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel"' -DCONFDIR='"/opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel"'   -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -MT stunnel-ui_unix.o -MD -MP -MF .deps/stunnel-ui_unix.Tpo -c -o stunnel-ui_unix.o `test -f 'ui_unix.c' || echo './'`ui_unix.c
+mv -f .deps/stunnel-ui_unix.Tpo .deps/stunnel-ui_unix.Po
+/bin/bash ../libtool  --tag=CC   --mode=link gcc  -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -L/usr/lib64 -L/usr/lib -lssl -lcrypto -fPIE -pie -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack -o stunnel  stunnel-tls.o stunnel-str.o stunnel-file.o stunnel-client.o stunnel-log.o stunnel-options.o stunnel-protocol.o stunnel-network.o stunnel-resolver.o stunnel-ssl.o stunnel-ctx.o stunnel-verify.o stunnel-sthreads.o stunnel-fd.o stunnel-stunnel.o stunnel-pty.o stunnel-libwrap.o stunnel-ui_unix.o  -lz -ldl -lutil -lnsl   -lwrap
+libtool: link: gcc -g -O2 -pthread -Wall -Wextra -Wformat=2 -Wconversion -Wno-long-long -Wno-deprecated-declarations -fstack-protector -fPIE -D_FORTIFY_SOURCE=2 -fPIE -pie -Wl,-z -Wl,relro -Wl,-z -Wl,now -Wl,-z -Wl,noexecstack -o stunnel stunnel-tls.o stunnel-str.o stunnel-file.o stunnel-client.o stunnel-log.o stunnel-options.o stunnel-protocol.o stunnel-network.o stunnel-resolver.o stunnel-ssl.o stunnel-ctx.o stunnel-verify.o stunnel-sthreads.o stunnel-fd.o stunnel-stunnel.o stunnel-pty.o stunnel-libwrap.o stunnel-ui_unix.o  -L/usr/lib64 -L/usr/lib -lssl -lcrypto -lz -ldl -lutil -lnsl -lwrap -pthread
+make[2]: Leaving directory `/root/STUNNEL/5.17/stunnel-5.17/src'
+make[1]: Leaving directory `/root/STUNNEL/5.17/stunnel-5.17/src'
+Making all in doc
+make[1]: Entering directory `/root/STUNNEL/5.17/stunnel-5.17/doc'
+make[1]: Nothing to be done for `all'.
+make[1]: Leaving directory `/root/STUNNEL/5.17/stunnel-5.17/doc'
+Making all in tools
+make[1]: Entering directory `/root/STUNNEL/5.17/stunnel-5.17/tools'
+make[1]: Nothing to be done for `all'.
+make[1]: Leaving directory `/root/STUNNEL/5.17/stunnel-5.17/tools'
+make[1]: Entering directory `/root/STUNNEL/5.17/stunnel-5.17'
+make[1]: Nothing to be done for `all-am'.
+make[1]: Leaving directory `/root/STUNNEL/5.17/stunnel-5.17'
+
+stunnel.post-make
+
+
+make install
+
+Making all in src
+make[1]: Entering directory `/root/STUNNEL/5.17/stunnel-5.17/src'
+make  all-am
+make[2]: Entering directory `/root/STUNNEL/5.17/stunnel-5.17/src'
+make[2]: Leaving directory `/root/STUNNEL/5.17/stunnel-5.17/src'
+make[1]: Leaving directory `/root/STUNNEL/5.17/stunnel-5.17/src'
+Making all in doc
+make[1]: Entering directory `/root/STUNNEL/5.17/stunnel-5.17/doc'
+make[1]: Nothing to be done for `all'.
+make[1]: Leaving directory `/root/STUNNEL/5.17/stunnel-5.17/doc'
+Making all in tools
+make[1]: Entering directory `/root/STUNNEL/5.17/stunnel-5.17/tools'
+make[1]: Nothing to be done for `all'.
+make[1]: Leaving directory `/root/STUNNEL/5.17/stunnel-5.17/tools'
+make[1]: Entering directory `/root/STUNNEL/5.17/stunnel-5.17'
+make[1]: Nothing to be done for `all-am'.
+make[1]: Leaving directory `/root/STUNNEL/5.17/stunnel-5.17'
+Making install in src
+make[1]: Entering directory `/root/STUNNEL/5.17/stunnel-5.17/src'
+make[2]: Entering directory `/root/STUNNEL/5.17/stunnel-5.17/src'
+ /bin/mkdir -p '/opt/Stunnel/5.17/Debian7/Linux/amd64/bin'
+  /bin/bash ../libtool   --mode=install /usr/bin/install -c stunnel '/opt/Stunnel/5.17/Debian7/Linux/amd64/bin'
+libtool: install: /usr/bin/install -c stunnel /opt/Stunnel/5.17/Debian7/Linux/amd64/bin/stunnel
+ /bin/mkdir -p '/opt/Stunnel/5.17/Debian7/Linux/amd64/bin'
+ /usr/bin/install -c stunnel3 '/opt/Stunnel/5.17/Debian7/Linux/amd64/bin'
+ /bin/mkdir -p '/opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel'
+ /bin/bash ../libtool   --mode=install /usr/bin/install -c   libstunnel.la '/opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel'
+libtool: install: /usr/bin/install -c .libs/libstunnel.so /opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel/libstunnel.so
+libtool: install: /usr/bin/install -c .libs/libstunnel.lai /opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel/libstunnel.la
+libtool: finish: PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/sbin" ldconfig -n /opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel
+----------------------------------------------------------------------
+Libraries have been installed in:
+   /opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel
+
+If you ever happen to want to link against installed libraries
+in a given directory, LIBDIR, you must either use libtool, and
+specify the full pathname of the library, or use the `-LLIBDIR'
+flag during linking and do at least one of the following:
+   - add LIBDIR to the `LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the `LD_RUN_PATH' environment variable
+     during linking
+   - use the `-Wl,-rpath -Wl,LIBDIR' linker flag
+   - have your system administrator add LIBDIR to `/etc/ld.so.conf'
+
+See any operating system documentation about shared libraries for
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+make[2]: Nothing to be done for `install-data-am'.
+make[2]: Leaving directory `/root/STUNNEL/5.17/stunnel-5.17/src'
+make[1]: Leaving directory `/root/STUNNEL/5.17/stunnel-5.17/src'
+Making install in doc
+make[1]: Entering directory `/root/STUNNEL/5.17/stunnel-5.17/doc'
+make[2]: Entering directory `/root/STUNNEL/5.17/stunnel-5.17/doc'
+make[2]: Nothing to be done for `install-exec-am'.
+ /bin/mkdir -p '/opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel'
+ /usr/bin/install -c -m 644 stunnel.html stunnel.pl.html '/opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel'
+ /bin/mkdir -p '/opt/Stunnel/5.17/Debian7/Linux/amd64/share/man/man8'
+ /usr/bin/install -c -m 644 stunnel.8 stunnel.pl.8 '/opt/Stunnel/5.17/Debian7/Linux/amd64/share/man/man8'
+make[2]: Leaving directory `/root/STUNNEL/5.17/stunnel-5.17/doc'
+make[1]: Leaving directory `/root/STUNNEL/5.17/stunnel-5.17/doc'
+Making install in tools
+make[1]: Entering directory `/root/STUNNEL/5.17/stunnel-5.17/tools'
+make[2]: Entering directory `/root/STUNNEL/5.17/stunnel-5.17/tools'
+make[2]: Nothing to be done for `install-exec-am'.
+ /bin/mkdir -p '/opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel'
+ /usr/bin/install -c -m 644 stunnel.conf-sample '/opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel'
+/usr/bin/install -c -d -m 1770 /opt/Stunnel/5.17/Debian7/Linux/amd64/var/lib/stunnel
+chgrp nogroup /opt/Stunnel/5.17/Debian7/Linux/amd64/var/lib/stunnel
+ /bin/mkdir -p '/opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/examples'
+ /usr/bin/install -c -m 644 ca.html ca.pl importCA.html importCA.sh script.sh stunnel.spec stunnel.init stunnel.service '/opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/examples'
+make[2]: Leaving directory `/root/STUNNEL/5.17/stunnel-5.17/tools'
+make[1]: Leaving directory `/root/STUNNEL/5.17/stunnel-5.17/tools'
+make[1]: Entering directory `/root/STUNNEL/5.17/stunnel-5.17'
+make[2]: Entering directory `/root/STUNNEL/5.17/stunnel-5.17'
+make[2]: Nothing to be done for `install-exec-am'.
+ /bin/mkdir -p '/opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel'
+ /usr/bin/install -c -m 644 INSTALL README TODO COPYING AUTHORS ChangeLog PORTS BUGS COPYRIGHT.GPL CREDITS INSTALL.W32 INSTALL.WCE INSTALL.FIPS '/opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel'
+make  install-data-hook
+make[3]: Entering directory `/root/STUNNEL/5.17/stunnel-5.17'
+*********************************************************
+* Type 'make cert' to also install a sample certificate *
+*********************************************************
+make[3]: Leaving directory `/root/STUNNEL/5.17/stunnel-5.17'
+make[2]: Leaving directory `/root/STUNNEL/5.17/stunnel-5.17'
+make[1]: Leaving directory `/root/STUNNEL/5.17/stunnel-5.17'
+
+hash in Stunnel.sha512sum
+
+45a2ad8a315b713eb1cdab86afc2925e2c30f7bdd1d9cec0a902e9c14617a19e9a7893d2fd17cc1bba2a8fc7ab15faaf9763bfeb14738d807779fc44aad94752  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/INSTALL.W32
+d2eb40a945dbfe2fadb7977280e62ec80191800a5bef38c36b9ddb7c1f9a44017a830bdc9f0fb49ffded3d8e4b60fbcc8bc505f4c5ee309062a7f152988e341c  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/examples/stunnel.init
+37fa3f1f9294c89ce0630de8d49ede1bbf249724834c40f7337be216355d1d991024c8468652411fea3a4e8e6acb406037ebaeb98a715bb505c229d8d113ca9e  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/examples/importCA.html
+dbe5634a8461a918f86c136eabd26b41ad97109b8af35ec3d38dfb8c71c5222abff6b60fc94a853c17947f557b6f4988c3e896a1abef5ee45529d85f450af0eb  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/examples/stunnel.service
+9bdae1d5039ff9f35a55fb8a7e526d52e7d87662467996082709e05b8aba2c6400cb7f1a540edc6e765c98a1278596e20e210e8100f58354632537926c10a1bb  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/examples/importCA.sh
+6093050a0ca05fd7e298ea7c1425d710508b6d7f9fbac37ed79abaf0ed7bb22c7ab04e642f524612011a643a2629115d9941147ac9d4d9b11b0b657f50b8268e  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/examples/stunnel.spec
+c47e8710f70fa2e3ab59d8d63b0dcd2f3a4f10d9c070539bae8092962c8e017df79c17291f10255c22131bd37ada854e63839d7305dc5e63bb77607fe8ccb26f  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/examples/script.sh
+e44cb7cb434a72010e1372eb9043ea7040029b146d75d2f225568a3e3eb199bd5fe6df751edddefc57f1e45a6a88c878b84bd229f7f19542f83a7dacf98a940a  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/examples/ca.html
+f55013a0fd9420afd329a7fdc0f36bd006cbdcbff409600d2855d15723738480ab344379b40bc626db0152bd4f047016417beeb4b362475b1a868a1360833b38  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/examples/ca.pl
+5e27e940544736e125c04a84e5fcd9f03f037072a7daf0b7d6e7277496e68687fbd2df0478ea4c683710b165792d1aea65ef69e473cfc37aafc85113a3e8bdad  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/INSTALL
+7cd62acf6a5c87c31852e2335e2fa0816c6bd40f0db9849de6b2a2167dbb2c7f63da17239b2d6acce1038ad97946ad14d3869706930ac5d943d968680b2e2797  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/INSTALL.WCE
+d0ce09c0f861afaa4389cbfb7d2255ca8234e0fe45367400a1166d23c13fc4be3ce6d618528399a0bf97cdd5dbad04615f12b8808bc4d0b181b7fc8e20494219  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/ChangeLog
+3708763b9783a9aa712c346754bab8e9f7b47f5c4ab965b56285ff41b13a4f496e84bed7727eb7d4286a926585cd82d9990b08dfb9c7a479de7fa3aea92dc79f  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/CREDITS
+a15a0ff9b7c5c226ead177018995eb6990048a4ddcd925ae9256d89527925b8ede6dcf1d0e8bb1838aafdb56236caa67652eb3eee78d77d79598a62172826976  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/README
+0195e591b8c25091dbf79ab8a6ef5ebb330c56b956d99b614b63687c45def8348fc1317782cfbfb839fb94de66cb9bf30f2b6cfee9aa1e5f54264043c39bb2de  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/BUGS
+7c65553442b8e4bbc5b134389eff96a62ab9c37f84b76b3e43675e48b1f384267bcd324da05c92221df0c73a62baa0018b02d0cdefb0d5d330cccc0f71cd301c  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/COPYRIGHT.GPL
+a4e8c2b0201f8930e21820b55eb8c91e860b1ad135501fbe848923606e120f752ae4b2e0750f38cc04bc760badfae14b39ccd0928b5f2c4ca753ae103b62def2  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/stunnel.html
+61f96ffdf894e3e3a9aa7a9946cf13764d21c7e200cf2caf7d49d64265387b6f4a5ad14cf712ce7e30e141f84a19f08ef91ce1240fb3e7ca40c6e55b237e50d4  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/stunnel.pl.html
+4d6918dc1c217894300dbe811b4e87dddbfe20fa02bedb12fb932e44862fec86feddab4a55ca75a58370a4dab1b216bf3c59c671d95d3a39cafa8b0f129475b1  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/INSTALL.FIPS
+3e16c7bb156c81f09b8ae3f957953b94b767f57ff68e14b930ffea541d65b925841c70a946e3845072569b890f59be712e6fe62aa82b7b975d7c61cb97b0ea3f  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/PORTS
+2a792abba5b3e8388c5276dd0f8f13ae02a1e735f4be82ae2e4dab96ab47f7b50f030192dffc18b01c625b3e64730e33a23dee19fde600cfe714c9b9ba081b39  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/COPYING
+30d9732cb5b5d4a6ae5cbd3a4a9c1a871ee21e613d68749dadb9543adf70b2c2739bf3a6c6c60f20ca8ef889735941f73bac2a91527b0f594da83e5c5a338973  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/TODO
+3d895f85310115d131c680a06fc2fe9d66eb88fd22b9f45f2e543124920c578a91e446403bd4a825397e2c465ddfce7cec3956e5905772d2eb24f279deb66785  opt/Stunnel/5.17/Debian7/Linux/amd64/share/doc/stunnel/AUTHORS
+72cb24111f6c23fbd350b2ad85fc6da7bbb1282cefbd69a7e4b74ce090f61456181a594acec432cba77f22367631c5d4c016d1dd9c6a6c0aee2e0b5aecf4235b  opt/Stunnel/5.17/Debian7/Linux/amd64/share/man/man8/stunnel.pl.8
+60a4ff650f35749fced2605247ee5987b520f48a9ec031cb4fec26db6cdd7f015dec6698798e790f7285f18b2d4e5cd8ca73af6703795d0eaeff89db2bb657f0  opt/Stunnel/5.17/Debian7/Linux/amd64/share/man/man8/stunnel.8
+631efadb789a7fc386cd4e961f8bc684fe1ff3347a1860edf07efa0cba85cfc02a7eb5eae12c5dae6ab9cc76d1129d1af276dbb8336f70d7d6d2f0e969634ac3  opt/Stunnel/5.17/Debian7/Linux/amd64/etc/stunnel/stunnel.conf-sample
+7e3e0bd9e14b6d7858cfed847aadf709694c23eb95fd96b8bbb2148dae3fdea754a22b69feca889edc5b78d3a2c8ae27c75c1cac4e7cae4319c9a4ac945ce01a  opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel/libstunnel.so
+553107953142d22a7b0a2107bc5ee6233df328ff78b6a16a8d5472b75d9e62874f283564686e0ecf0ea6eccc002acc54c21f52226d3d790b0cbde33beee4132d  opt/Stunnel/5.17/Debian7/Linux/amd64/lib/stunnel/libstunnel.la
+eecfe86413108eca4cd4086d7d4933be03c113fda2bfbd59b0c3bef5860a8dbde37ebba42f924d22a66fc12ebbf91ebbe38c6feb5781a47f97182b8ec6c9156b  opt/Stunnel/5.17/Debian7/Linux/amd64/bin/stunnel
+7ae3b214dada8455f204e4b8a1003ff1f83f7e31e41594eab8642774278e3af017282dc7c739cd801a66ffe031709cc2c4913dd92280da8fe0308047657efd49  opt/Stunnel/5.17/Debian7/Linux/amd64/bin/stunnel3
+
+hash in Stunnel.sha512sum.sha512sum
+
+c82cf2255bdbb2ae852e07be8b69538ac3dfd4673bd136d82db56763d4709d26efcbeed0a7ac7804293c7b3e5f9a5fa07906c15ca9dee1ddd1b0f21a2cd57c8e  Stunnel.sha512sum
+
+hash in stunnel-5.17.tar.gz.sha512sum
+
+07064bda6978d94f783fd1c125485f46eadcba0e4a419366149e91cf88333b875eeb86f63848b5dd774f9f01d41206f93905fa5a51a08ade915b4b0bce777419  stunnel-5.17.tar.gz
+
+total 680
+drwxr-xr-x 3 root root   4096 Jun  4 12:10 .
+drwxr-xr-x 3 root root   4096 Jun  4 12:10 ..
+-rw-r--r-- 1 root root  40667 Jun  4 12:10 Stunnel.log
+-rw-r--r-- 1 root root   5895 Jun  4 12:10 Stunnel.sha512sum
+-rw-r--r-- 1 root root    148 Jun  4 12:10 Stunnel.sha512sum.sha512sum
+drwxr-xr-x 3 root root   4096 Jun  4 12:10 opt
+-rwxr-xr-x 2 root root   5900 Jun  4 11:58 prepara.ricetta
+-rw-r--r-- 1 root root 613840 Jun  4 12:10 stunnel-5.17.tar.gz
+-rw-r--r-- 1 root root    150 Jun  4 12:10 stunnel-5.17.tar.gz.sha512sum
+-rwxr-xr-x 1 root root    289 Jun  4 12:08 stunnel.ingredienti
+
