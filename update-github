@@ -20,14 +20,14 @@
 # 0. You just DO WHAT THE FUCK YOU WANT TO.
 #
 
+[ -z $1 ] && commento=""
+
 # i parametri commentati sono stati inseriti nell'hook git pre-commit
 git config --global user.name "mutek"
 git config --global user.email mutek@inventati.org
 
 commento=$1
 versione=$2
-
-[ -z $1 ] && commento=""
 
 # lista tags
 git tag
