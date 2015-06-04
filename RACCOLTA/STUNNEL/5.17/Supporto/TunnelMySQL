@@ -1,0 +1,59 @@
+# un tunnel con mysql
+##############################################################
+## SERVER HOST MYSQL ##
+# arrivano le richieste dal tunnel e vengono redirette al localhost mysql sulla 3306
+
+# stunnel.conf dell'host contiene:
+
+# percorso completo al pem
+cert = /opt/STUNNEL/MYSQL/stunnel.pem
+
+# prova ad ingabbiare in una chroot
+chroot = /opt/STUNNEL/var/run/stunnel/
+# ingabbia il pid file nella rooot della chroot
+pid = /stunnel.pid
+
+# anonimizza lo UID e GID a nobody
+setuid = nobody
+setgid = nogroup
+
+# parametri per mysql
+# stunnel riceve sulla 3307 e routa sulla 3306 dove c'è mysql
+[mysqls]
+accept  = 3307
+connect = 3306
+###############################################################
+# fai partire con:
+# stunnel stunnel.conf
+###############################################################
+
+
+## CLIENT GUEST MYSQL
+
+# percorso completo al pem file
+cert = /opt/STUNNEL/CLIENT/stunnel.pem
+
+# chroot
+chroot = /opt/STUNNEL/var/run/stunnel/
+# pid in jail
+pid = /stunnel.pid
+
+# UID e GID
+setuid = nobody
+setgid = nogroup
+
+# esplicita che è un client
+client = yes
+
+# stunnel riceve chiamate localhost sulla 3306 dove ascolta e redirige all'IP:PORTA dove attende l'altro stunnel
+[mysqls]
+accept  = 3306
+connect = 10.10.10.4:3307
+#######################################
+
+a questo punto mysql lavora in localhost regolarmente
+mysql -h 127.0.0.1 -u utente -p
+
+
+ATTENZIONE:
+la chroot deve essere scrivibile a nobody:nogroup
