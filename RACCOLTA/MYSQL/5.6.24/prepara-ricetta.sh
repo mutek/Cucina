@@ -1,6 +1,6 @@
 #!/usr/bin/env sh
 # 
-# prepara.ricetta 1.5
+# prepara.ricetta v1.7.1
 #
 # 2014-2015 mutek <mutek _A_T_ riseup _D_O_T_ net>
 # WTF
@@ -104,9 +104,9 @@ do
 
 	# post tar - pre configure	
 
-        echo "" >> ../$APP_NAME.log
-        echo "$PROGRAM_NAME.pre-configure" >> ../$APP_NAME.log
-        echo "" >> ../$APP_NAME.log
+        echo "" >> $APP_NAME.log
+        echo "$PROGRAM_NAME.pre-configure" >> $APP_NAME.log
+        echo "" >> $APP_NAME.log
 
        [ -f ./$PROGRAM_NAME.pre-configure ] && . ./$PROGRAM_NAME.pre-configure
 
@@ -118,15 +118,20 @@ do
 	echo "" >> $APP_NAME.log
 
 	cd $PROGRAM_NAME-$RELEASE
-	./configure --prefix=$PREFIX $CONFIGURE_OPTIONS >> ../$APP_NAME.log
+	[ -f ./configure ] && { ./configure --prefix=$PREFIX $CONFIGURE_OPTIONS >> ../$APP_NAME.log; }
 
 	# un pizzico di fantasia prima di cuocere la pietanza
+
+	echo " >>> finding pre-cook ... "
 
         echo "" >> ../$APP_NAME.log
         echo "$PROGRAM_NAME.pre-cook" >> ../$APP_NAME.log
         echo "" >> ../$APP_NAME.log	
 
 	[ -f ../$PROGRAM_NAME.pre-cook ] && . ../$PROGRAM_NAME.pre-cook && cat ../$PROGRAM_NAME.pre-cook >> ../$APP_NAME.log
+
+
+	echo " >>> going to make ... "
 
 	echo "" >> ../$APP_NAME.log
 	echo "make" >> ../$APP_NAME.log

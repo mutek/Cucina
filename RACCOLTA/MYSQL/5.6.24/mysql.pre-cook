@@ -1,7 +1,9 @@
 export LC_ALL=C
 # usiamo cmake quindi assicuriamoci di lavorare nell'ambiente richiesto
 
-[ $(which cmake) ] || { echo "cmake non presente è necessario installarlo"; apt-get install cmake; }
+#[ $(which cmake) ] || { echo "cmake non presente è necessario installarlo"; apt-get install cmake libncurses5 libncurses5-dev; }
+
+apt-get install cmake libncurses5 libncurses5-dev
 
 # lavoriamo in una build directory di comodo come consono a cmake
 
