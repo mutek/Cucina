@@ -5,11 +5,11 @@ ARCHIVE_TYPE="tar.gz"
 APP_NAME=Lxc
 DISTRO=Debian7
 KERNEL=Linux
-ARCH=ia32
+ARCH=amd64
 PREFIX_ROOT=/opt
 SOURCE_URL="https://linuxcontainers.org/downloads/lxc/lxc-1.1.2.tar.gz"
 STRIP_ALL=true
-CONFIGURE_OPTIONS=""
+CONFIGURE_OPTIONS=" --enable-seccomp=no --enable-selinux=no --enable-apparmor=no"
 MD5SUM=""
 SHA1SUM=""
 SHA256SUM=""
