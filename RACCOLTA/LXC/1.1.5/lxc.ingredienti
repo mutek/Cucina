@@ -1,0 +1,16 @@
+# LXC
+RELEASE=1.1.5
+PROGRAM_NAME=lxc
+ARCHIVE_TYPE="tar.gz"
+APP_NAME=Lxc
+DISTRO=Debian8
+KERNEL=Linux
+ARCH=amd64
+PREFIX_ROOT=/opt
+SOURCE_URL="https://linuxcontainers.org/downloads/lxc/lxc-1.1.3.tar.gz"
+STRIP_ALL=true
+CONFIGURE_OPTIONS=" --enable-seccomp=no --enable-selinux=no --enable-apparmor=no"
+MD5SUM=""
+SHA1SUM=""
+SHA256SUM=""
+SHA512SUM=""
